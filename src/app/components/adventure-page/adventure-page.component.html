@@ -6,7 +6,7 @@
       </h1>
     </div>
   }
-  <div class="relative w-full flex-1 min-h-[360px]">
+  <div class="relative w-full flex-1 min-h-[520px]">
     @for (el of elementsWithAdventure(); track el.adventure.id) {
       <div
         class="absolute transform"
@@ -24,7 +24,7 @@
         }
         @case ('map') {
           @if (el.adventure.coordinates) {
-            <div class="w-[280px]">
+            <div class="w-full max-w-[580px] min-w-[280px]">
               <app-adventure-map
                 [coordinates]="el.adventure.coordinates"
                 [mapContainerId]="'map-' + el.adventure.id"
