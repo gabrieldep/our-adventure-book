@@ -8,6 +8,7 @@ import {
   ViewChild,
   ElementRef,
   signal,
+  HostBinding,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -49,8 +50,14 @@ export class SpotifyEmbedComponent implements AfterViewInit, OnDestroy {
 
   /** Spotify URI (e.g. spotify:playlist:xxx or spotify:album:xxx) */
   uri = input.required<string>();
+  /** Smaller embed (e.g. for corner placement) */
+  compact = input<boolean>(false);
 
   @ViewChild('embedContainer', { static: false }) embedContainer!: ElementRef<HTMLDivElement>;
+
+  @HostBinding('class.spotify-embed-compact') get isCompact(): boolean {
+    return this.compact();
+  }
 
   isReady = signal(false);
   private controller: SpotifyEmbedController | null = null;
@@ -76,10 +83,11 @@ export class SpotifyEmbedComponent implements AfterViewInit, OnDestroy {
     const uri = this.uri();
     if (!uri) return;
 
+    const compact = this.compact();
     const options: SpotifyEmbedOptions = {
       uri,
       width: '100%',
-      height: '152',
+      height: compact ? '80' : '152',
     };
 
     const createController = (IFrameAPI: SpotifyIframeApi) => {
