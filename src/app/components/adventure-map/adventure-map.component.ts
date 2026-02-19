@@ -10,6 +10,11 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import type { Coordinates } from '../../models/adventure.model';
 
+interface MapInstance {
+  remove(): void;
+  invalidateSize(): void;
+}
+
 @Component({
   selector: 'app-adventure-map',
   standalone: true,
@@ -22,7 +27,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   mapContainerId = input<string>('adventure-map');
 
   isBrowser = signal(false);
-  private mapInstance: unknown = null;
+  private mapInstance: MapInstance | null = null;
+  private resizeHandler: (() => void) | null = null;
 
   constructor() {
     this.isBrowser.set(isPlatformBrowser(this.platformId));
@@ -35,9 +41,15 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.isBrowser() && this.mapInstance) {
-      (this.mapInstance as { remove: () => void }).remove();
-      this.mapInstance = null;
+    if (this.isBrowser()) {
+      if (this.resizeHandler) {
+        window.removeEventListener('resize', this.resizeHandler);
+        window.removeEventListener('orientationchange', this.resizeHandler);
+      }
+      if (this.mapInstance) {
+        this.mapInstance.remove();
+        this.mapInstance = null;
+      }
     }
   }
 
@@ -66,6 +78,12 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       iconAnchor: [8, 8],
     });
     L.marker([coords.lat, coords.lng], { icon: vintageIcon }).addTo(map);
-    this.mapInstance = map;
+    this.mapInstance = map as unknown as MapInstance;
+
+    this.resizeHandler = () => {
+      setTimeout(() => this.mapInstance?.invalidateSize(), 200);
+    };
+    window.addEventListener('resize', this.resizeHandler);
+    window.addEventListener('orientationchange', this.resizeHandler);
   }
 }

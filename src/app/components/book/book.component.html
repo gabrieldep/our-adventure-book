@@ -1,4 +1,4 @@
-<div class="book-spread relative flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-center min-h-screen paper-texture p-4">
+<div class="book-viewport paper-texture">
   <button
     type="button"
     class="fixed top-4 right-4 z-50 px-2 py-1 rounded text-xs font-typewriter bg-[#4B3621] text-[#F5F5DC] hover:bg-[#6b5344]"
@@ -9,58 +9,73 @@
   @if (showAdmin()) {
     <app-admin />
   }
-  <aside class="lg:fixed lg:left-4 lg:top-1/2 lg:-translate-y-1/2 z-10">
-    <app-timeline />
-  </aside>
 
-  @if (adventureService.isCoverPage()) {
-    <div
-      class="spread flex flex-col lg:flex-row gap-4 lg:gap-0 w-full max-w-[95vw] lg:max-w-7xl xl:max-w-[1600px] items-stretch justify-center flex-1 lg:min-h-[80vh]"
-    >
-      <div
-        class="page flex-1 min-w-0 lg:min-w-[400px] lg:max-w-[50%] min-h-[60vh] lg:min-h-[80vh] paper-texture page flex items-center justify-center p-6 lg:p-8"
-      >
+  @if (!isMobile()) {
+    <aside class="fixed left-4 top-1/2 -translate-y-1/2 z-10">
+      <app-timeline />
+    </aside>
+  }
+
+  @if (isMobile()) {
+    <h1 class="font-heading text-[#4B3621] text-2xl font-bold text-center mb-3">Gabriel & Ana</h1>
+  }
+
+  <div
+    class="book-scaler"
+    [style.width.px]="bookDesignWidth()"
+    [style.height.px]="bookHeight"
+    [style.transform]="'scale(' + bookScale() + ')'"
+    [style.margin-bottom.px]="scaledMarginBottom()"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    @if (adventureService.isCoverPage()) {
+      <div class="book-page paper-texture page flex items-center justify-center p-6">
         <app-book-cover />
       </div>
-    </div>
-  } @else {
-    <div
-      class="spread flex flex-col lg:flex-row gap-4 lg:gap-0 w-full max-w-[95vw] lg:max-w-7xl xl:max-w-[1600px] items-stretch lg:items-stretch justify-center flex-1 lg:min-h-[80vh]"
-    >
-      <div
-        class="page left-page flex-1 min-w-0 lg:min-w-[400px] lg:max-w-[50%] min-h-[60vh] lg:min-h-[80vh] paper-texture page"
-      >
-        <div class="p-6 lg:p-8 h-full">
+    } @else if (isMobile()) {
+      <div class="book-page paper-texture page">
+        <div class="page-inner">
           <app-adventure-page />
         </div>
       </div>
-
-      <div class="spine hidden lg:block w-2 flex-shrink-0 bg-[#4B3621]/40 rounded mx-0.5" aria-hidden="true"></div>
-
-      <div
-        class="page right-page flex-1 min-w-0 lg:min-w-[400px] lg:max-w-[50%] min-h-[60vh] lg:min-h-[80vh] paper-texture flex items-center justify-center"
-      >
-        <div class="text-[#6b5344] font-typewriter text-sm">Next spread</div>
+    } @else {
+      <div class="book-spread-inner">
+        <div class="book-page left-page paper-texture page">
+          <div class="page-inner">
+            <app-adventure-page />
+          </div>
+        </div>
+        <div class="book-spine" aria-hidden="true"></div>
+        <div class="book-page right-page paper-texture page flex items-center justify-center">
+          <div class="text-[#6b5344] font-typewriter text-sm">Next spread</div>
+        </div>
       </div>
-    </div>
-  }
+    }
+  </div>
 
-  <div class="flex gap-4 mt-6 lg:mt-8 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:flex-col">
+  <div class="book-nav" [class.book-nav--mobile]="isMobile()">
     <button
       type="button"
-      class="px-6 py-3 rounded-lg font-typewriter text-base bg-[#4B3621] text-[#F5F5DC] hover:bg-[#6b5344] disabled:opacity-50 disabled:pointer-events-none transition-colors shadow-md"
+      class="book-nav-btn font-typewriter"
       [disabled]="!adventureService.hasPrevPage()"
       (click)="goPrev()"
     >
-      Previous
+      ← Prev
     </button>
     <button
       type="button"
-      class="px-6 py-3 rounded-lg font-typewriter text-base bg-[#4B3621] text-[#F5F5DC] hover:bg-[#6b5344] disabled:opacity-50 disabled:pointer-events-none transition-colors shadow-md"
+      class="book-nav-btn font-typewriter"
       [disabled]="!adventureService.hasNextPage()"
       (click)="goNext()"
     >
-      Next
+      Next →
     </button>
   </div>
+
+  @if (isMobile()) {
+    <nav class="mobile-timeline-bar">
+      <app-timeline [horizontal]="true" />
+    </nav>
+  }
 </div>

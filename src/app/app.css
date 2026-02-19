@@ -10,3 +10,11 @@
   border: 1px solid rgba(75, 54, 33, 0.22);
   box-shadow: 2px 2px 12px rgba(75, 54, 33, 0.18);
 }
+
+@media (max-width: 767px) {
+  .spotify-root {
+    width: 260px;
+    right: 0.5rem;
+    bottom: 3.5rem;
+  }
+}

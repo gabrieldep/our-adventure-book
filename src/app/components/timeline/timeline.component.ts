@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { AdventureService } from '../../services/adventure.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { AdventureService } from '../../services/adventure.service';
 export class TimelineComponent {
   private readonly adventureService = inject(AdventureService);
 
+  horizontal = input(false);
   pageNumbers = this.adventureService.totalPagesIndexed;
   currentPageNumber = this.adventureService.currentPageNumber;
 
