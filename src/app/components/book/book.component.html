@@ -36,10 +36,8 @@
           <div class="book-spine book-spine--left" aria-hidden="true"></div>
           <div class="book-spine book-spine--right" aria-hidden="true"></div>
       @if (adventureService.isCoverPage()) {
-        <div class="book-single-view">
-          <div class="kraft-page kraft-page--cover flex items-center justify-center p-6">
-            <app-book-cover />
-          </div>
+        <div class="book-cover-view">
+          <app-book-cover />
         </div>
       } @else if (isMobile()) {
         <div class="book-single-view">
