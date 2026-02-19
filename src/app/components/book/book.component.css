@@ -39,6 +39,24 @@
 .page-inner {
   padding: 1.5rem;
   height: 100%;
+  position: relative;
+}
+
+.page-number {
+  position: absolute;
+  left: 50%;
+  top: 95%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 700;
+  color: #b85c38;
+}
+
+.next-spread-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {

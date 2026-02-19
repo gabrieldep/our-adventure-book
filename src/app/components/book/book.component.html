@@ -37,6 +37,9 @@
       <div class="book-page paper-texture page">
         <div class="page-inner">
           <app-adventure-page />
+          <div class="page-number font-typewriter">
+            {{ adventureService.currentPage()?.pageNumber }}
+          </div>
         </div>
       </div>
     } @else {
@@ -44,11 +47,14 @@
         <div class="book-page left-page paper-texture page">
           <div class="page-inner">
             <app-adventure-page />
+            <div class="page-number font-typewriter">
+              {{ adventureService.currentPage()?.pageNumber }}
+            </div>
           </div>
         </div>
         <div class="book-spine" aria-hidden="true"></div>
         <div class="book-page right-page paper-texture page flex items-center justify-center">
-          <div class="text-[#6b5344] font-typewriter text-sm">Next spread</div>
+          <div class="next-spread-label font-typewriter text-[#6b5344] text-sm">Next spread</div>
         </div>
       </div>
     }
