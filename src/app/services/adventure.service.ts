@@ -12,7 +12,7 @@ const ADVENTURES_URL = '/assets/data/adventures.json';
 @Injectable({ providedIn: 'root' })
 export class AdventureService {
   private readonly dataSignal = signal<AdventuresData | null>(null);
-  private readonly currentPageIndex = signal(0);
+  readonly currentPageIndex = signal(0);
 
   readonly adventures = computed(() => {
     const data = this.dataSignal();
@@ -24,28 +24,32 @@ export class AdventureService {
     return data?.pages ?? [];
   });
 
+  /** Index 0 = cover; index >= 1 = spread from JSON (pages[index - 1]). */
   readonly currentPage = computed(() => {
     const pages = this.pages();
     const idx = this.currentPageIndex();
-    return pages[idx] ?? null;
+    if (idx === 0) return null;
+    return pages[idx - 1] ?? null;
   });
 
-  readonly currentPageNumber = computed(() => {
-    const p = this.currentPage();
-    return p?.pageNumber ?? 1;
-  });
+  readonly currentPageNumber = computed(() => this.currentPageIndex() + 1);
 
   readonly hasNextPage = computed(() => {
     const pages = this.pages();
     const idx = this.currentPageIndex();
-    return idx < pages.length - 1;
+    return idx < pages.length;
   });
 
-  readonly hasPrevPage = computed(() => {
-    return this.currentPageIndex() > 0;
+  readonly hasPrevPage = computed(() => this.currentPageIndex() > 0);
+
+  readonly totalPages = computed(() => 1 + this.pages().length);
+
+  readonly totalPagesIndexed = computed(() => {
+    const n = this.totalPages();
+    return Array.from({ length: n }, (_, i) => i + 1);
   });
 
-  readonly totalPages = computed(() => this.pages().length);
+  readonly isCoverPage = computed(() => this.currentPageIndex() === 0);
 
   constructor(private http: HttpClient) {
     this.loadAdventures();
@@ -61,7 +65,7 @@ export class AdventureService {
 
   setCurrentPage(index: number): void {
     const pages = this.pages();
-    const clamped = Math.max(0, Math.min(index, pages.length - 1));
+    const clamped = Math.max(0, Math.min(index, pages.length));
     this.currentPageIndex.set(clamped);
   }
 
