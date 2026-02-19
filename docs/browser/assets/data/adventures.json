@@ -1,0 +1,91 @@
+{
+  "adventures": [
+    {
+      "id": "1",
+      "title": "",
+      "date": "2025-02-23",
+      "description": "Nossa primeira foto :)",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/2025-02-23.1.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "2",
+      "title": "Bloco Circuladô 2025",
+      "date": "2025-02-23",
+      "description": "Aniversário do Bruno e o melhor bloquinho de carnaval de todos os tempos :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "3",
+      "title": "",
+      "date": "2025-02-23",
+      "description": "Foto número zero",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/2025-02-23.2.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "4",
+      "title": "",
+      "date": "2025-02-23",
+      "description": "Avenida Afonso Pena com Gonçalvez Dias",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.932837, "lng": -43.930233 }
+    },
+    {
+      "id": "5",
+      "title": "Bloco Circuladô 2025",
+      "date": "2025-02-23",
+      "description": "\"Pra não dizer que nunca tirei foto com você!\"",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "elements": [
+        {
+          "adventureId": "1",
+          "top": 20,
+          "left": 8,
+          "rotation": -4
+        },
+        {
+          "adventureId": "2",
+          "top": 90,
+          "left": 60,
+          "rotation": 15
+        }
+      ]
+    },
+    {
+      "pageNumber": 2,
+      "elements": [
+        {
+          "adventureId": "3",
+          "top": 0,
+          "left": 8,
+          "rotation": -4
+        },
+        {
+          "adventureId": "4",
+          "top": 70,
+          "left": 30,
+          "rotation": 10
+        },
+        {
+          "adventureId": "5",
+          "top": 50,
+          "left": 60,
+          "rotation": 15
+        }
+      ]
+    }
+  ]
+}
