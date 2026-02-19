@@ -4,6 +4,15 @@
 
 :host {
   --leather-cover: #4b3621;
+  /* Kraft paper stack edge shades (light to dark) for multi-layer effect */
+  --kraft-edge-1: #d2b48c;
+  --kraft-edge-2: #c9a97a;
+  --kraft-edge-3: #c4a484;
+  --kraft-edge-4: #b8956a;
+  --kraft-edge-5: #a67c52;
+  --kraft-edge-6: #9a6b42;
+  --kraft-edge-7: #8b5a2b;
+  --kraft-edge-8: #7a4a1f;
 }
 
 .book-viewport {
@@ -46,27 +55,72 @@
 
 /* --------------------------------------------------------------------------
    Under-cover: Outer Leather (visible behind the pages)
-   Leather rim extends 10px beyond Kraft pages; ambient occlusion shadow
+   Overhang/lip larger than paper stack; contact shadow grounds the book
    -------------------------------------------------------------------------- */
 .book-outer-leather {
   width: 100%;
   height: 100%;
   min-height: 100%;
+  position: relative;
   background-color: var(--leather-cover);
-  /* Ambient occlusion: large soft shadow so cover floats above background */
+  /* Contact shadow: heavy, soft where cover meets surface; then ambient */
   box-shadow:
     inset 0 0 0 1px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(0, 0, 0, 0.15),
-    0 4px 6px rgba(0, 0, 0, 0.25),
-    0 12px 24px rgba(0, 0, 0, 0.2),
-    0 24px 48px rgba(0, 0, 0, 0.18),
-    0 48px 96px rgba(0, 0, 0, 0.12),
-    0 80px 160px rgba(0, 0, 0, 0.08);
+    0 6px 12px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.22),
+    0 28px 56px rgba(0, 0, 0, 0.28),
+    0 44px 88px rgba(0, 0, 0, 0.2),
+    0 64px 120px rgba(0, 0, 0, 0.12),
+    0 96px 160px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  padding: 10px;
+  padding: 14px;
   box-sizing: border-box;
+}
+
+/* 3D binding: rounded spine strips on far left/right (leather curving to table) */
+.book-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: linear-gradient(
+    90deg,
+    #3d2b1a 0%,
+    #4b3621 35%,
+    #5a4230 50%,
+    #4b3621 65%,
+    #3d2b1a 100%
+  );
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.book-spine--left {
+  left: 0;
+  border-radius: 6px 0 0 6px;
+  box-shadow:
+    inset 2px 0 8px rgba(0, 0, 0, 0.25),
+    inset 0 0 12px rgba(0, 0, 0, 0.2),
+    2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.book-spine--right {
+  right: 0;
+  border-radius: 0 6px 6px 0;
+  box-shadow:
+    inset -2px 0 8px rgba(0, 0, 0, 0.25),
+    inset 0 0 12px rgba(0, 0, 0, 0.2),
+    -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.book-single-view,
+.book-spread-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .book-single-view {
@@ -84,30 +138,31 @@
 }
 
 /* --------------------------------------------------------------------------
-   Spine / Gutter: Deep crease (valley of open book), fixed during page flip
+   Spine / Gutter: Dark, deep crease – pages pulled into binding
    -------------------------------------------------------------------------- */
 .book-crease {
-  width: 20px;
+  width: 24px;
   flex-shrink: 0;
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.15) 30%,
-    rgba(0, 0, 0, 0.4) 45%,
-    rgba(0, 0, 0, 0.65) 50%,
-    rgba(0, 0, 0, 0.4) 55%,
-    rgba(0, 0, 0, 0.15) 70%,
+    rgba(0, 0, 0, 0.25) 25%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.75) 50%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.25) 75%,
     transparent 100%
   );
   margin: 0 -1px;
   box-shadow:
-    inset 0 0 20px rgba(0, 0, 0, 0.25),
-    inset 0 0 40px rgba(0, 0, 0, 0.15);
+    inset 0 0 24px rgba(0, 0, 0, 0.45),
+    inset 0 0 48px rgba(0, 0, 0, 0.25),
+    inset 2px 0 12px rgba(0, 0, 0, 0.3),
+    inset -2px 0 12px rgba(0, 0, 0, 0.3);
 }
 
 /* --------------------------------------------------------------------------
-   Kraft Page: Papel Kraft aesthetic
-   Color, paper grain, layered edges, rounded outer / straight spine
+   Kraft Page: Papel Kraft aesthetic + page arch (curve from spine)
    -------------------------------------------------------------------------- */
 .kraft-page {
   position: relative;
@@ -116,8 +171,18 @@
   min-width: 0;
   height: 100%;
   background-color: var(--kraft-paper, #c4a484);
-  /* Paper grain: fibrous, recycled texture */
+  /* Paper grain + subtle arch: radial highlight from spine so paper isn’t flat */
   background-image:
+    radial-gradient(
+      ellipse 120% 100% at 20% 50%,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 120% 100% at 80% 50%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    ),
     repeating-linear-gradient(
       0deg,
       transparent 0,
@@ -145,74 +210,145 @@
     inset -1px 0 0 rgba(0, 0, 0, 0.06);
 }
 
-/* Stack effect: 5–7 layered edges (1px offset, varying shade) like stacked Kraft pages */
+/* Multi-layer stack: outer edge only. Left page = left edge; right page = right edge.
+   Kraft browns (#D2B48C → darker), 1px offset per layer (8 layers). */
+/* Extra “block” of paper edge: strip of alternating Kraft shades (dozens of sheets) */
+.kraft-page--left::after {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  border-radius: 4px 0 0 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--kraft-edge-1) 0px,
+    var(--kraft-edge-2) 1px,
+    var(--kraft-edge-3) 2px,
+    var(--kraft-edge-4) 3px,
+    var(--kraft-edge-5) 4px,
+    var(--kraft-edge-6) 5px,
+    var(--kraft-edge-7) 6px,
+    var(--kraft-edge-8) 7px,
+    var(--kraft-edge-1) 8px,
+    var(--kraft-edge-3) 9px,
+    var(--kraft-edge-5) 10px,
+    var(--kraft-edge-7) 11px,
+    var(--kraft-edge-8) 12px,
+    var(--kraft-edge-8) 14px
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
 .kraft-page--left {
-  border-radius: 6px 0 0 6px;
-  /* Corner curl: tiny bend for old paper warping */
+  overflow: visible;
+  /* Corner thickness: bottom layers slightly wider = larger radius at bottom */
+  border-radius: 6px 0 0 8px;
   transform: skewY(-0.2deg);
   transform-origin: left center;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset 1px 0 0 rgba(255, 255, 255, 0.06),
-    -1px 0 0 rgba(0, 0, 0, 0.06),
-    -2px 0 0 rgba(0, 0, 0, 0.05),
-    -3px 0 0 rgba(0, 0, 0, 0.04),
-    -4px 0 0 rgba(0, 0, 0, 0.035),
-    -5px 0 0 rgba(0, 0, 0, 0.03),
-    -6px 0 0 rgba(0, 0, 0, 0.025),
-    -7px 0 0 rgba(0, 0, 0, 0.02),
-    -2px 0 4px rgba(0, 0, 0, 0.08),
-    -4px 0 8px rgba(0, 0, 0, 0.05),
-    -6px 0 12px rgba(0, 0, 0, 0.03);
+    -1px 0 0 var(--kraft-edge-1),
+    -2px 0 0 var(--kraft-edge-2),
+    -3px 0 0 var(--kraft-edge-3),
+    -4px 0 0 var(--kraft-edge-4),
+    -5px 0 0 var(--kraft-edge-5),
+    -6px 0 0 var(--kraft-edge-6),
+    -7px 0 0 var(--kraft-edge-7),
+    -8px 0 0 var(--kraft-edge-8),
+    -3px 0 6px rgba(0, 0, 0, 0.08),
+    -6px 0 12px rgba(0, 0, 0, 0.05),
+    -    10px 0 20px rgba(0, 0, 0, 0.03);
+}
+
+.kraft-page--right::after {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  border-radius: 0 4px 6px 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--kraft-edge-1) 0px,
+    var(--kraft-edge-2) 1px,
+    var(--kraft-edge-3) 2px,
+    var(--kraft-edge-4) 3px,
+    var(--kraft-edge-5) 4px,
+    var(--kraft-edge-6) 5px,
+    var(--kraft-edge-7) 6px,
+    var(--kraft-edge-8) 7px,
+    transparent 7px,
+    transparent 8px
+  );
+  z-index: -1;
+  pointer-events: none;
 }
 
 .kraft-page--right {
-  border-radius: 0 6px 6px 0;
+  overflow: visible;
+  border-radius: 0 6px 8px 0;
   transform: skewY(0.2deg);
   transform-origin: right center;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset -1px 0 0 rgba(0, 0, 0, 0.06),
-    1px 0 0 rgba(0, 0, 0, 0.06),
-    2px 0 0 rgba(0, 0, 0, 0.05),
-    3px 0 0 rgba(0, 0, 0, 0.04),
-    4px 0 0 rgba(0, 0, 0, 0.035),
-    5px 0 0 rgba(0, 0, 0, 0.03),
-    6px 0 0 rgba(0, 0, 0, 0.025),
-    7px 0 0 rgba(0, 0, 0, 0.02),
-    2px 0 4px rgba(0, 0, 0, 0.08),
-    4px 0 8px rgba(0, 0, 0, 0.05),
-    6px 0 12px rgba(0, 0, 0, 0.03);
+    1px 0 0 var(--kraft-edge-1),
+    2px 0 0 var(--kraft-edge-2),
+    3px 0 0 var(--kraft-edge-3),
+    4px 0 0 var(--kraft-edge-4),
+    5px 0 0 var(--kraft-edge-5),
+    6px 0 0 var(--kraft-edge-6),
+    7px 0 0 var(--kraft-edge-7),
+    8px 0 0 var(--kraft-edge-8),
+    3px 0 6px rgba(0, 0, 0, 0.08),
+    6px 0 12px rgba(0, 0, 0, 0.05),
+    10px 0 20px rgba(0, 0, 0, 0.03);
 }
 
+/* Single/cover: stacked edges on all sides; bottom corners slightly larger (thickness) */
 .kraft-page--single,
 .kraft-page--cover {
-  border-radius: 8px;
+  border-radius: 8px 8px 10px 10px;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
-    1px 1px 0 rgba(0, 0, 0, 0.05),
-    2px 2px 0 rgba(0, 0, 0, 0.04),
-    3px 3px 0 rgba(0, 0, 0, 0.035),
-    4px 4px 0 rgba(0, 0, 0, 0.03),
-    5px 5px 0 rgba(0, 0, 0, 0.025),
-    6px 6px 0 rgba(0, 0, 0, 0.02),
+    1px 0 0 var(--kraft-edge-1),
+    2px 0 0 var(--kraft-edge-2),
+    3px 0 0 var(--kraft-edge-3),
+    4px 0 0 var(--kraft-edge-4),
+    5px 0 0 var(--kraft-edge-5),
+    6px 0 0 var(--kraft-edge-6),
+    0 1px 0 var(--kraft-edge-1),
+    0 2px 0 var(--kraft-edge-2),
+    0 3px 0 var(--kraft-edge-3),
+    0 4px 0 var(--kraft-edge-4),
+    -1px 0 0 var(--kraft-edge-1),
+    -2px 0 0 var(--kraft-edge-2),
+    -3px 0 0 var(--kraft-edge-3),
+    0 -1px 0 var(--kraft-edge-1),
+    0 -2px 0 var(--kraft-edge-2),
     2px 2px 4px rgba(0, 0, 0, 0.08),
     4px 4px 8px rgba(0, 0, 0, 0.05),
     6px 6px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Lift: when page is flipping, soft shadow under it (larger/blurrier = further from table) */
+/* Lift: when page is flipping, soft shadow under it; keep Kraft stack visible */
 .kraft-page--left.kraft-page--lifting {
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset 1px 0 0 rgba(255, 255, 255, 0.06),
-    -1px 0 0 rgba(0, 0, 0, 0.06),
-    -2px 0 0 rgba(0, 0, 0, 0.05),
-    -3px 0 0 rgba(0, 0, 0, 0.04),
-    -4px 0 0 rgba(0, 0, 0, 0.035),
-    -5px 0 0 rgba(0, 0, 0, 0.03),
-    -6px 0 0 rgba(0, 0, 0, 0.025),
-    -7px 0 0 rgba(0, 0, 0, 0.02),
+    -1px 0 0 var(--kraft-edge-1),
+    -2px 0 0 var(--kraft-edge-2),
+    -3px 0 0 var(--kraft-edge-3),
+    -4px 0 0 var(--kraft-edge-4),
+    -5px 0 0 var(--kraft-edge-5),
+    -6px 0 0 var(--kraft-edge-6),
+    -7px 0 0 var(--kraft-edge-7),
+    -8px 0 0 var(--kraft-edge-8),
     0 6px 12px rgba(0, 0, 0, 0.12),
     0 12px 24px rgba(0, 0, 0, 0.1),
     0 20px 40px rgba(0, 0, 0, 0.08),
@@ -224,13 +360,14 @@
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset -1px 0 0 rgba(0, 0, 0, 0.06),
-    1px 0 0 rgba(0, 0, 0, 0.06),
-    2px 0 0 rgba(0, 0, 0, 0.05),
-    3px 0 0 rgba(0, 0, 0, 0.04),
-    4px 0 0 rgba(0, 0, 0, 0.035),
-    5px 0 0 rgba(0, 0, 0, 0.03),
-    6px 0 0 rgba(0, 0, 0, 0.025),
-    7px 0 0 rgba(0, 0, 0, 0.02),
+    1px 0 0 var(--kraft-edge-1),
+    2px 0 0 var(--kraft-edge-2),
+    3px 0 0 var(--kraft-edge-3),
+    4px 0 0 var(--kraft-edge-4),
+    5px 0 0 var(--kraft-edge-5),
+    6px 0 0 var(--kraft-edge-6),
+    7px 0 0 var(--kraft-edge-7),
+    8px 0 0 var(--kraft-edge-8),
     0 6px 12px rgba(0, 0, 0, 0.12),
     0 12px 24px rgba(0, 0, 0, 0.1),
     0 20px 40px rgba(0, 0, 0, 0.08),
