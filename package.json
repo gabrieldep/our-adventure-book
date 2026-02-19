@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --output-path docs --base-href /our-adventure-book/ && cp -r docs/browser/* docs/ && rm -rf docs/browser docs/server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:our-adventure-book": "node dist/our-adventure-book/server/server.mjs"
