@@ -32,11 +32,8 @@
     "@angular/platform-server": "^21.1.0",
     "@angular/router": "^21.1.0",
     "@angular/ssr": "^21.1.4",
-    "@labsforge/flipbook": "^0.1.2",
     "@types/leaflet": "^1.9.21",
     "express": "^5.1.0",
-    "gsap": "^3.14.2",
-    "hammerjs": "^2.0.8",
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
