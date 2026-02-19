@@ -13,17 +13,8 @@ import type { Coordinates } from '../../models/adventure.model';
 @Component({
   selector: 'app-adventure-map',
   standalone: true,
-  template: `
-    @if (!isBrowser()) {
-      <div
-        class="w-full h-[200px] bg-[#a0826d] rounded flex items-center justify-center text-[#4B3621] font-typewriter text-sm"
-      >
-        Map loading…
-      </div>
-    } @else if (mapContainerId()) {
-      <div [id]="mapContainerId()" class="w-full h-[200px] rounded overflow-hidden"></div>
-    }
-  `,
+  templateUrl: './adventure-map.component.html',
+  styleUrl: './adventure-map.component.css',
 })
 export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);

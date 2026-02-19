@@ -1,0 +1,241 @@
+.cover-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 0.5rem;
+  perspective: 1200px;
+  box-sizing: border-box;
+}
+
+.cover-book {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  min-height: 280px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  transform: rotateY(-4deg) rotateX(2deg);
+  transform-style: preserve-3d;
+  box-shadow:
+    4px 4px 20px rgba(75, 54, 33, 0.4),
+    8px 8px 40px rgba(75, 54, 33, 0.2);
+  box-sizing: border-box;
+}
+
+/* Spine - scales with book (min so it doesn't vanish) */
+.cover-spine {
+  width: 7%;
+  min-width: 24px;
+  max-width: 40px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #6b2020 0%, #8b0000 15%, #7a2828 50%, #8b0000 85%, #5c1818 100%);
+  border-radius: 3px 0 0 3px;
+  position: relative;
+  box-shadow: inset 1px 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.cover-grommet {
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #4a4a4a, #1a1a1a);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.cover-rope {
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 50px;
+  z-index: 1;
+}
+
+.rope-loop-left,
+.rope-loop-right {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border: 3px solid #a0826d;
+  border-color: #8b7355 #6b5344 #8b7355 #a0826d;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c4a574 0%, #8b7355 50%, #6b5344 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3), 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.rope-loop-left {
+  left: -2px;
+  top: 8px;
+  transform: rotate(-15deg);
+  border-right-color: transparent;
+}
+
+.rope-loop-right {
+  right: -2px;
+  top: 8px;
+  transform: rotate(15deg);
+  border-left-color: transparent;
+}
+
+.rope-end {
+  position: absolute;
+  left: 50%;
+  width: 6px;
+  height: 14px;
+  background: linear-gradient(90deg, #6b5344, #8b7355, #6b5344);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.rope-end-top {
+  top: -4px;
+  transform: translateX(-50%) rotate(-25deg);
+  transform-origin: bottom center;
+}
+
+.rope-end-bottom {
+  bottom: -4px;
+  transform: translateX(-50%) rotate(25deg);
+  transform-origin: top center;
+}
+
+/* Front cover - fills remaining space */
+.cover-front {
+  flex: 1 1 auto;
+  position: relative;
+  min-width: 200px;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+}
+
+.cover-leather {
+  position: absolute;
+  inset: 0;
+  background-color: #3d2b1a;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1px,
+      rgba(0, 0, 0, 0.03) 1px,
+      rgba(0, 0, 0, 0.03) 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 1px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(0, 0, 0, 0.02) 2px
+    );
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.15);
+}
+
+.cover-frame {
+  position: absolute;
+  inset: 14%;
+  border: 2px solid #2d1f12;
+  box-shadow: inset 0 0 0 4px #5c4a32, inset 0 0 0 6px #2d1f12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem 2.5rem;
+}
+
+.cover-title {
+  font-family: 'Indie Flower', cursive;
+  font-size: clamp(1.25rem, 2.5vw, 2.75rem);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-shadow:
+    1px 1px 0 rgba(0, 0, 0, 0.2),
+    -1px -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.title-our {
+  display: block;
+  color: #b85c38;
+  transform: rotate(-0.5deg);
+}
+
+.title-adventure {
+  display: block;
+  color: #7a4040;
+  transform: rotate(0.3deg);
+}
+
+.title-book {
+  display: block;
+  color: #4a6b5c;
+  transform: rotate(0.8deg);
+}
+
+.cover-globe {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12%;
+  height: 11%;
+  min-width: 40px;
+  min-height: 36px;
+  max-width: 80px;
+  max-height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #a0826d 0%, #8b7355 30%, #6b5344 70%, #5c4a32 100%);
+  box-shadow:
+    inset 2px 2px 8px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 6px rgba(0, 0, 0, 0.25),
+    2px 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.globe-inner {
+  width: 80%;
+  height: 80%;
+  border: 1px solid rgba(75, 54, 33, 0.5);
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(75, 54, 33, 0.4) 49%, rgba(75, 54, 33, 0.4) 51%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(75, 54, 33, 0.35) 49%, rgba(75, 54, 33, 0.35) 51%, transparent 51%),
+    linear-gradient(45deg, transparent 48%, rgba(75, 54, 33, 0.2) 50%, transparent 52%);
+}
+
+.cover-edge {
+  position: absolute;
+  background: linear-gradient(180deg, #d4c4a0 0%, #c4b090 100%);
+  pointer-events: none;
+}
+
+.cover-edge-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 0 4px 0 0;
+}
+
+.cover-edge-right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+}
