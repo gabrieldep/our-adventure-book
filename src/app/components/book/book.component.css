@@ -1,3 +1,11 @@
+/* ==========================================================================
+   Open Book – Outer Leather & Kraft Pages
+   ========================================================================== */
+
+:host {
+  --leather-cover: #4b3621;
+}
+
 .book-viewport {
   display: flex;
   flex-direction: column;
@@ -17,31 +25,149 @@
   touch-action: pan-y;
 }
 
+/* --------------------------------------------------------------------------
+   Under-cover: Outer Leather (visible behind the pages)
+   Deep brown, box-shadow suggests thickness (at least 10px deep)
+   -------------------------------------------------------------------------- */
+.book-outer-leather {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background-color: var(--leather-cover);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 4px 6px rgba(0, 0, 0, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.35),
+    0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.book-single-view {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+
 .book-spread-inner {
   display: flex;
+  flex: 1;
   width: 100%;
   height: 100%;
+  min-width: 0;
 }
 
-.book-page {
-  height: 100%;
-  width: 100%;
+/* --------------------------------------------------------------------------
+   Spine / Gutter: Crease effect (depth of an open spine)
+   -------------------------------------------------------------------------- */
+.book-crease {
+  width: 16px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 45%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.3) 55%,
+    transparent 100%
+  );
+  margin: 0 -1px;
+}
+
+/* --------------------------------------------------------------------------
+   Kraft Page: Papel Kraft aesthetic
+   Color, paper grain, layered edges, rounded outer / straight spine
+   -------------------------------------------------------------------------- */
+.kraft-page {
   position: relative;
   overflow: hidden;
-}
-
-.book-spread-inner .book-page {
   flex: 1;
   min-width: 0;
-  width: auto;
+  height: 100%;
+  background-color: var(--kraft-paper, #c4a484);
+  /* Paper grain: fibrous, recycled texture */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 1px,
+      rgba(45, 27, 13, 0.03) 1px,
+      rgba(45, 27, 13, 0.03) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1px,
+      rgba(45, 27, 13, 0.025) 1px,
+      rgba(45, 27, 13, 0.025) 2px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.04) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    inset 1px 0 0 rgba(255, 255, 255, 0.06),
+    inset -1px 0 0 rgba(0, 0, 0, 0.06);
 }
 
+/* Layered edges: stacking effect (pages underneath) */
+.kraft-page--left {
+  border-radius: 4px 0 0 4px;
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    inset 1px 0 0 rgba(255, 255, 255, 0.06),
+    -2px 0 4px rgba(0, 0, 0, 0.08),
+    -4px 0 8px rgba(0, 0, 0, 0.05),
+    -6px 0 12px rgba(0, 0, 0, 0.03);
+}
+
+.kraft-page--right {
+  border-radius: 0 4px 4px 0;
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    inset -1px 0 0 rgba(0, 0, 0, 0.06),
+    2px 0 4px rgba(0, 0, 0, 0.08),
+    4px 0 8px rgba(0, 0, 0, 0.05),
+    6px 0 12px rgba(0, 0, 0, 0.03);
+}
+
+.kraft-page--single,
+.kraft-page--cover {
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    2px 2px 4px rgba(0, 0, 0, 0.08),
+    4px 4px 8px rgba(0, 0, 0, 0.05),
+    6px 6px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Page inner content area */
 .page-inner {
   padding: 1.5rem;
   height: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
+.kraft-inner {
+  color: var(--kraft-text, #2d1b0d);
+}
+
+@media (min-width: 768px) {
+  .page-inner {
+    padding: 2rem;
+  }
+}
+
+/* Page number (Kraft contrast) */
 .page-number {
   position: absolute;
   left: 50%;
@@ -57,23 +183,14 @@
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  color: var(--kraft-text, #2d1b0d);
+  font-size: 0.875rem;
+  opacity: 0.85;
 }
 
-@media (min-width: 768px) {
-  .page-inner {
-    padding: 2rem;
-  }
-}
-
-.book-spine {
-  width: 8px;
-  flex-shrink: 0;
-  background: rgba(75, 54, 33, 0.4);
-  border-radius: 2px;
-  margin: 0 2px;
-}
-
-/* Navigation */
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
 .book-nav {
   display: flex;
   gap: 1rem;
@@ -125,8 +242,8 @@
   left: 0;
   right: 0;
   z-index: 40;
-  background: rgba(245, 245, 220, 0.95);
-  border-top: 1px solid rgba(75, 54, 33, 0.2);
+  background: rgba(196, 164, 132, 0.97);
+  border-top: 1px solid rgba(45, 27, 13, 0.2);
   padding: 0.5rem 1rem;
   backdrop-filter: blur(4px);
 }

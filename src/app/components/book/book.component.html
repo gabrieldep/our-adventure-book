@@ -1,4 +1,4 @@
-<div class="book-viewport paper-texture">
+<div class="book-viewport">
   <button
     type="button"
     class="fixed top-4 right-4 z-50 px-2 py-1 rounded text-xs font-typewriter bg-[#4B3621] text-[#F5F5DC] hover:bg-[#6b5344]"
@@ -17,7 +17,7 @@
   }
 
   @if (isMobile()) {
-    <h1 class="font-heading text-[#4B3621] text-2xl font-bold text-center mb-3">Gabriel & Ana</h1>
+    <h1 class="font-heading text-[#2D1B0D] text-2xl font-bold text-center mb-3">Gabriel & Ana</h1>
   }
 
   <div
@@ -29,35 +29,42 @@
     (touchstart)="onTouchStart($event)"
     (touchend)="onTouchEnd($event)"
   >
-    @if (adventureService.isCoverPage()) {
-      <div class="book-page paper-texture page flex items-center justify-center p-6">
-        <app-book-cover />
-      </div>
-    } @else if (isMobile()) {
-      <div class="book-page paper-texture page">
-        <div class="page-inner">
-          <app-adventure-page />
-          <div class="page-number font-typewriter">
-            {{ adventureService.currentPage()?.pageNumber }}
+    <!-- Outer leather: under-cover visible behind the pages -->
+    <div class="book-outer-leather">
+      @if (adventureService.isCoverPage()) {
+        <div class="book-single-view">
+          <div class="kraft-page kraft-page--cover flex items-center justify-center p-6">
+            <app-book-cover />
           </div>
         </div>
-      </div>
-    } @else {
-      <div class="book-spread-inner">
-        <div class="book-page left-page paper-texture page">
-          <div class="page-inner">
-            <app-adventure-page />
-            <div class="page-number font-typewriter">
-              {{ adventureService.currentPage()?.pageNumber }}
+      } @else if (isMobile()) {
+        <div class="book-single-view">
+          <div class="kraft-page kraft-page--single">
+            <div class="page-inner kraft-inner">
+              <app-adventure-page />
+              <div class="page-number font-typewriter">
+                {{ adventureService.currentPage()?.pageNumber }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="book-spine" aria-hidden="true"></div>
-        <div class="book-page right-page paper-texture page flex items-center justify-center">
-          <div class="next-spread-label font-typewriter text-[#6b5344] text-sm">Next spread</div>
+      } @else {
+        <div class="book-spread-inner">
+          <div class="kraft-page kraft-page--left">
+            <div class="page-inner kraft-inner">
+              <app-adventure-page />
+              <div class="page-number font-typewriter">
+                {{ adventureService.currentPage()?.pageNumber }}
+              </div>
+            </div>
+          </div>
+          <div class="book-crease" aria-hidden="true"></div>
+          <div class="kraft-page kraft-page--right flex items-center justify-center">
+            <div class="next-spread-label font-typewriter">Next spread</div>
+          </div>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 
   <div class="book-nav" [class.book-nav--mobile]="isMobile()">

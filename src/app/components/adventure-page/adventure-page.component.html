@@ -1,7 +1,7 @@
 <div class="adventure-page relative w-full h-full min-h-[400px]">
   @if (isFirstPage()) {
     <div class="text-center pt-2 pb-6">
-      <h1 class="font-heading text-[#4B3621] text-2xl md:text-3xl lg:text-4xl font-bold">
+      <h1 class="adventure-title font-heading text-2xl md:text-3xl lg:text-4xl font-bold">
         Gabriel & Ana.
       </h1>
     </div>
@@ -30,14 +30,12 @@
                 [mapContainerId]="'map-' + el.adventure.id"
                 [caption]="el.adventure.description"
               />
-              <p class="font-handwriting text-[#4B3621] text-sm mt-1">{{ el.adventure.title }}</p>
+              <p class="adventure-caption font-handwriting text-sm mt-1">{{ el.adventure.title }}</p>
             </div>
           }
         }
         @case ('note') {
-          <div
-            class="note max-w-[200px] p-3 bg-[#F5F5DC] border border-[#4B3621]/30 rounded shadow-sm font-handwriting text-[#4B3621] text-sm"
-          >
+          <div class="note max-w-[200px] p-3 border rounded shadow-sm font-handwriting text-sm">
             <strong class="font-typewriter">{{ el.adventure.title }}</strong>
             <p class="mt-1">{{ el.adventure.description }}</p>
           </div>

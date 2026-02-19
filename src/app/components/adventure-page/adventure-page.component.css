@@ -1,1 +1,32 @@
-/* Adventure page component styles */
+/* Adventure page: default (e.g. light background) */
+.adventure-page {
+  color: var(--leather-brown);
+}
+
+.adventure-page .adventure-title,
+.adventure-page .adventure-caption,
+.adventure-page .note {
+  color: var(--leather-brown);
+}
+
+.adventure-page .note {
+  background-color: var(--aged-paper);
+  border-color: rgba(75, 54, 33, 0.3);
+}
+
+/* Kraft paper context (inside open book): darker text for readability */
+:host-context(.kraft-inner) .adventure-page {
+  color: var(--kraft-text);
+}
+
+:host-context(.kraft-inner) .adventure-title,
+:host-context(.kraft-inner) .adventure-caption,
+:host-context(.kraft-inner) .adventure-page .font-handwriting,
+:host-context(.kraft-inner) .note {
+  color: var(--kraft-text);
+}
+
+:host-context(.kraft-inner) .note {
+  background-color: rgba(245, 245, 220, 0.92);
+  border-color: rgba(45, 27, 13, 0.35);
+}
