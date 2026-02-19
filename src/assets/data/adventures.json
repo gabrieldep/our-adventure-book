@@ -44,6 +44,33 @@
       "type": "note",
       "contentUrl": null,
       "coordinates": null
+    },
+    {
+      "id": "6",
+      "title": "Aniversário da Ana",
+      "date": "2025-02-28",
+      "description": "\"Gabriel conheceu os amigos da Ana no New Market e fomos para o bar depois\"",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "7",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Beijinho",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/2025-02-28.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "8",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Bar Del Ruim",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.923659, "lng": -43.941722 }
     }
   ],
   "pages": [
@@ -84,6 +111,30 @@
           "top": 50,
           "left": 60,
           "rotation": 15
+        }
+      ]
+    }
+    ,
+    {
+      "pageNumber": 3,
+      "elements": [
+        {
+          "adventureId": "6",
+          "top": 20,
+          "left": 8,
+          "rotation": -4
+        },
+        {
+          "adventureId": "7",
+          "top": 65,
+          "left": 0,
+          "rotation": 10
+        },
+        {
+          "adventureId": "8",
+          "top": 0,
+          "left": 50,
+          "rotation": 0
         }
       ]
     }
