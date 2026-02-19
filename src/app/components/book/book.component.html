@@ -60,7 +60,13 @@
           </div>
           <div class="book-crease" aria-hidden="true"></div>
           <div class="kraft-page kraft-page--right flex items-center justify-center">
-            <div class="next-spread-label font-typewriter">Next spread</div>
+            <div class="right-page-content">
+              @if (adventureService.currentRightPageText(); as text) {
+                <p class="right-page-poem font-heading">{{ text }}</p>
+              } @else {
+                <div class="next-spread-label font-typewriter">Next spread</div>
+              }
+            </div>
           </div>
         </div>
       }

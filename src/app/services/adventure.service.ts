@@ -5,13 +5,16 @@ import {
   AdventuresData,
   BookPage,
   PageElement,
+  RightPageTextsData,
 } from '../models/adventure.model';
 
 const ADVENTURES_URL = '/assets/data/adventures.json';
+const RIGHT_PAGE_TEXTS_URL = '/assets/data/right-page-texts.json';
 
 @Injectable({ providedIn: 'root' })
 export class AdventureService {
   private readonly dataSignal = signal<AdventuresData | null>(null);
+  private readonly rightPageTextsSignal = signal<string[]>([]);
   readonly currentPageIndex = signal(0);
 
   readonly adventures = computed(() => {
@@ -51,8 +54,17 @@ export class AdventureService {
 
   readonly isCoverPage = computed(() => this.currentPageIndex() === 0);
 
+  /** Text for the current spread's right page (blank page). Index 0 = first content spread. */
+  readonly currentRightPageText = computed(() => {
+    const idx = this.currentPageIndex();
+    if (idx === 0) return null;
+    const texts = this.rightPageTextsSignal();
+    return texts[idx - 1] ?? null;
+  });
+
   constructor(private http: HttpClient) {
     this.loadAdventures();
+    this.loadRightPageTexts();
   }
 
   loadAdventures(): void {
@@ -60,6 +72,13 @@ export class AdventureService {
       next: (data) => this.dataSignal.set(data),
       error: () =>
         this.dataSignal.set({ adventures: [], pages: [] }),
+    });
+  }
+
+  loadRightPageTexts(): void {
+    this.http.get<RightPageTextsData>(RIGHT_PAGE_TEXTS_URL).subscribe({
+      next: (data) => this.rightPageTextsSignal.set(data?.texts ?? []),
+      error: () => this.rightPageTextsSignal.set([]),
     });
   }
 

@@ -31,3 +31,8 @@ export interface AdventuresData {
   adventures: Adventure[];
   pages: BookPage[];
 }
+
+/** Formatted strings for the right (blank) page of each spread. Use \n for newlines; indentation is preserved. */
+export interface RightPageTextsData {
+  texts: string[];
+}
