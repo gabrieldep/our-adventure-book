@@ -28,6 +28,7 @@
               <app-adventure-map
                 [coordinates]="el.adventure.coordinates"
                 [mapContainerId]="'map-' + el.adventure.id"
+                [caption]="el.adventure.description"
               />
               <p class="font-handwriting text-[#4B3621] text-sm mt-1">{{ el.adventure.title }}</p>
             </div>

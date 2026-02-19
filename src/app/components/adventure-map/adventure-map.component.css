@@ -1,1 +1,41 @@
-/* Adventure map component styles */
+/* Same polaroid frame style as app-polaroid */
+:host {
+  display: block;
+  margin: 1rem 0;
+}
+
+.polaroid {
+  max-width: 420px;
+  width: 100%;
+  box-shadow:
+    0 1px 3px rgba(75, 54, 33, 0.12),
+    0 4px 6px rgba(75, 54, 33, 0.08),
+    0 8px 16px rgba(75, 54, 33, 0.06);
+}
+
+@media (max-width: 767px) {
+  .polaroid {
+    max-width: 300px;
+  }
+}
+
+.map-placeholder,
+.map-container {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sepia-mid);
+  color: var(--leather-brown);
+  font-family: var(--font-typewriter);
+  font-size: 0.875rem;
+}
+
+.map-container {
+  overflow: hidden;
+}

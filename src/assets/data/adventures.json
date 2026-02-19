@@ -29,9 +29,9 @@
     },
     {
       "id": "4",
-      "title": "Carnaval BH",
+      "title": "",
       "date": "2025-02-23",
-      "description": "Avenida Brasil com Gonçalvez Dias",
+      "description": "Avenida Afonso Pena com Gonçalvez Dias",
       "type": "map",
       "contentUrl": null,
       "coordinates": { "lat": -19.932837, "lng": -43.930233 }
@@ -69,14 +69,14 @@
       "elements": [
         {
           "adventureId": "3",
-          "top": 5,
+          "top": 0,
           "left": 8,
           "rotation": -4
         },
         {
           "adventureId": "4",
-          "top": 80,
-          "left": 25,
+          "top": 70,
+          "left": 30,
           "rotation": 10
         },
         {

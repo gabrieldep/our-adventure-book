@@ -25,6 +25,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   coordinates = input.required<Coordinates>();
   mapContainerId = input<string>('adventure-map');
+  /** Caption under the map (e.g. from adventure.description), like polaroid */
+  caption = input<string>('');
 
   isBrowser = signal(false);
   private mapInstance: MapInstance | null = null;
