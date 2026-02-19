@@ -10,13 +10,6 @@ import type { Adventure, PageElement } from '../../models/adventure.model';
   imports: [PolaroidComponent, AdventureMapComponent],
   template: `
     <div class="adventure-page relative w-full h-full min-h-[400px]">
-      @if (isFirstPage()) {
-        <div class="text-center pt-2 pb-6">
-          <h1 class="font-heading text-[#4B3621] text-2xl md:text-3xl lg:text-4xl font-bold">
-            Gabriel & Ana.
-          </h1>
-        </div>
-      }
       <div class="relative w-full flex-1 min-h-[360px]">
         @for (el of elementsWithAdventure(); track el.adventure.id) {
           <div
