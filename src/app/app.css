@@ -1,0 +1,15 @@
+.spotify-root {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 40;
+  width: 100%;
+  max-width: 340px;
+}
+
+@media (min-width: 1024px) {
+  .spotify-root {
+    left: 1rem;
+    bottom: 1rem;
+  }
+}

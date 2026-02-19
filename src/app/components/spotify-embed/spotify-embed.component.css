@@ -1,0 +1,16 @@
+.spotify-embed-wrapper {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(75, 54, 33, 0.2);
+}
+
+.spotify-embed-container {
+  width: 100%;
+  min-height: 152px;
+}
+
+.spotify-embed-container iframe {
+  border-radius: 12px;
+}
