@@ -1,46 +1,24 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AdventureService } from '../../services/adventure.service';
-import type { Adventure, AdventureType } from '../../models/adventure.model';
+import { Component, inject, signal, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+const TODO_LIST_URL = '/assets/data/todo-list.json';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
-export class AdminComponent {
-  private readonly adventureService = inject(AdventureService);
+export class AdminComponent implements OnInit {
+  private readonly http = inject(HttpClient);
 
-  title = '';
-  date = '';
-  description = '';
-  type: AdventureType = 'photo';
-  contentUrl = 'https://picsum.photos/400/300';
-  lat = 0;
-  lng = 0;
-  layoutTop = 10;
-  layoutLeft = 10;
-  layoutRotation = 0;
+  readonly items = signal<string[]>([]);
 
-  onSubmit(): void {
-    const id = Date.now().toString();
-    const adventure: Adventure = {
-      id,
-      title: this.title || 'Untitled',
-      date: this.date || new Date().toISOString().slice(0, 10),
-      description: this.description || '',
-      type: this.type,
-      contentUrl: this.type === 'photo' ? this.contentUrl || null : null,
-      coordinates: this.type === 'map' ? { lat: this.lat, lng: this.lng } : null,
-    };
-    this.adventureService.addAdventure(adventure, {
-      top: this.layoutTop,
-      left: this.layoutLeft,
-      rotation: this.layoutRotation,
+  ngOnInit(): void {
+    this.http.get<{ items: string[] }>(TODO_LIST_URL).subscribe({
+      next: (data) => this.items.set(data?.items ?? []),
+      error: () => this.items.set([]),
     });
-    this.title = '';
-    this.description = '';
   }
 }
