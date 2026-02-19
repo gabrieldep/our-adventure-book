@@ -39,6 +39,8 @@ export class BookComponent {
 
   readonly showAdmin = signal(false);
   readonly bookHeight = BOOK_HEIGHT;
+  /** When true, the 'turning' page shows lift shadow (briefly on prev/next). */
+  readonly pageLifting = signal<'left' | 'right' | null>(null);
 
   private readonly viewportWidth = signal(1024);
   private readonly viewportHeight = signal(768);
@@ -86,11 +88,15 @@ export class BookComponent {
   }
 
   goNext(): void {
+    this.pageLifting.set('right');
     this.adventureService.nextPage();
+    setTimeout(() => this.pageLifting.set(null), 400);
   }
 
   goPrev(): void {
+    this.pageLifting.set('left');
     this.adventureService.prevPage();
+    setTimeout(() => this.pageLifting.set(null), 400);
   }
 
   onTouchStart(event: TouchEvent): void {

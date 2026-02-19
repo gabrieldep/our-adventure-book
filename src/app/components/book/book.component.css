@@ -26,24 +26,46 @@
 }
 
 /* --------------------------------------------------------------------------
+   3D Container: perspective and tilt (stacked scrapbook on table)
+   -------------------------------------------------------------------------- */
+.book-3d-container {
+  perspective: 1500px;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.book-3d-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  transform: rotateX(5deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* --------------------------------------------------------------------------
    Under-cover: Outer Leather (visible behind the pages)
-   Deep brown, box-shadow suggests thickness (at least 10px deep)
+   Leather rim extends 10px beyond Kraft pages; ambient occlusion shadow
    -------------------------------------------------------------------------- */
 .book-outer-leather {
   width: 100%;
   height: 100%;
   min-height: 100%;
   background-color: var(--leather-cover);
+  /* Ambient occlusion: large soft shadow so cover floats above background */
   box-shadow:
     inset 0 0 0 1px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(0, 0, 0, 0.15),
     0 4px 6px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.35),
-    0 20px 40px rgba(0, 0, 0, 0.2);
+    0 12px 24px rgba(0, 0, 0, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.18),
+    0 48px 96px rgba(0, 0, 0, 0.12),
+    0 80px 160px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  padding: 12px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -62,20 +84,25 @@
 }
 
 /* --------------------------------------------------------------------------
-   Spine / Gutter: Crease effect (depth of an open spine)
+   Spine / Gutter: Deep crease (valley of open book), fixed during page flip
    -------------------------------------------------------------------------- */
 .book-crease {
-  width: 16px;
+  width: 20px;
   flex-shrink: 0;
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.3) 45%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.3) 55%,
+    rgba(0, 0, 0, 0.15) 30%,
+    rgba(0, 0, 0, 0.4) 45%,
+    rgba(0, 0, 0, 0.65) 50%,
+    rgba(0, 0, 0, 0.4) 55%,
+    rgba(0, 0, 0, 0.15) 70%,
     transparent 100%
   );
   margin: 0 -1px;
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.25),
+    inset 0 0 40px rgba(0, 0, 0, 0.15);
 }
 
 /* --------------------------------------------------------------------------
@@ -118,22 +145,41 @@
     inset -1px 0 0 rgba(0, 0, 0, 0.06);
 }
 
-/* Layered edges: stacking effect (pages underneath) */
+/* Stack effect: 5–7 layered edges (1px offset, varying shade) like stacked Kraft pages */
 .kraft-page--left {
-  border-radius: 4px 0 0 4px;
+  border-radius: 6px 0 0 6px;
+  /* Corner curl: tiny bend for old paper warping */
+  transform: skewY(-0.2deg);
+  transform-origin: left center;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset 1px 0 0 rgba(255, 255, 255, 0.06),
+    -1px 0 0 rgba(0, 0, 0, 0.06),
+    -2px 0 0 rgba(0, 0, 0, 0.05),
+    -3px 0 0 rgba(0, 0, 0, 0.04),
+    -4px 0 0 rgba(0, 0, 0, 0.035),
+    -5px 0 0 rgba(0, 0, 0, 0.03),
+    -6px 0 0 rgba(0, 0, 0, 0.025),
+    -7px 0 0 rgba(0, 0, 0, 0.02),
     -2px 0 4px rgba(0, 0, 0, 0.08),
     -4px 0 8px rgba(0, 0, 0, 0.05),
     -6px 0 12px rgba(0, 0, 0, 0.03);
 }
 
 .kraft-page--right {
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 6px 6px 0;
+  transform: skewY(0.2deg);
+  transform-origin: right center;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
     inset -1px 0 0 rgba(0, 0, 0, 0.06),
+    1px 0 0 rgba(0, 0, 0, 0.06),
+    2px 0 0 rgba(0, 0, 0, 0.05),
+    3px 0 0 rgba(0, 0, 0, 0.04),
+    4px 0 0 rgba(0, 0, 0, 0.035),
+    5px 0 0 rgba(0, 0, 0, 0.03),
+    6px 0 0 rgba(0, 0, 0, 0.025),
+    7px 0 0 rgba(0, 0, 0, 0.02),
     2px 0 4px rgba(0, 0, 0, 0.08),
     4px 0 8px rgba(0, 0, 0, 0.05),
     6px 0 12px rgba(0, 0, 0, 0.03);
@@ -141,12 +187,55 @@
 
 .kraft-page--single,
 .kraft-page--cover {
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow:
     inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    1px 1px 0 rgba(0, 0, 0, 0.05),
+    2px 2px 0 rgba(0, 0, 0, 0.04),
+    3px 3px 0 rgba(0, 0, 0, 0.035),
+    4px 4px 0 rgba(0, 0, 0, 0.03),
+    5px 5px 0 rgba(0, 0, 0, 0.025),
+    6px 6px 0 rgba(0, 0, 0, 0.02),
     2px 2px 4px rgba(0, 0, 0, 0.08),
     4px 4px 8px rgba(0, 0, 0, 0.05),
     6px 6px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Lift: when page is flipping, soft shadow under it (larger/blurrier = further from table) */
+.kraft-page--left.kraft-page--lifting {
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    inset 1px 0 0 rgba(255, 255, 255, 0.06),
+    -1px 0 0 rgba(0, 0, 0, 0.06),
+    -2px 0 0 rgba(0, 0, 0, 0.05),
+    -3px 0 0 rgba(0, 0, 0, 0.04),
+    -4px 0 0 rgba(0, 0, 0, 0.035),
+    -5px 0 0 rgba(0, 0, 0, 0.03),
+    -6px 0 0 rgba(0, 0, 0, 0.025),
+    -7px 0 0 rgba(0, 0, 0, 0.02),
+    0 6px 12px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 28px 56px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease-out;
+}
+
+.kraft-page--right.kraft-page--lifting {
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 27, 13, 0.12),
+    inset -1px 0 0 rgba(0, 0, 0, 0.06),
+    1px 0 0 rgba(0, 0, 0, 0.06),
+    2px 0 0 rgba(0, 0, 0, 0.05),
+    3px 0 0 rgba(0, 0, 0, 0.04),
+    4px 0 0 rgba(0, 0, 0, 0.035),
+    5px 0 0 rgba(0, 0, 0, 0.03),
+    6px 0 0 rgba(0, 0, 0, 0.025),
+    7px 0 0 rgba(0, 0, 0, 0.02),
+    0 6px 12px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 28px 56px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease-out;
 }
 
 /* Page inner content area */
