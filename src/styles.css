@@ -1,3 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* OurAdventureBook – Up aesthetic */
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --leather-brown: #4b3621;
+  --aged-paper: #f5f5dc;
+  --vintage-red: #8b0000;
+  --sepia-dark: #6b5344;
+  --sepia-mid: #a0826d;
+  --font-typewriter: 'Special Elite', monospace;
+  --font-handwriting: 'Indie Flower', cursive;
+  --font-heading: 'Arvo', Georgia, serif;
+}
+
+body {
+  font-family: var(--font-typewriter);
+  background-color: var(--aged-paper);
+  color: var(--leather-brown);
+  min-height: 100vh;
+}
+
+/* Paper texture – subtle grain via repeating gradient */
+.paper-texture {
+  background-color: var(--aged-paper);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(75, 54, 33, 0.03) 2px,
+      rgba(75, 54, 33, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(75, 54, 33, 0.02) 2px,
+      rgba(75, 54, 33, 0.02) 4px
+    );
+}
+
+/* Page container: rounded, slightly torn edges (shadow + border-radius) */
+.page {
+  position: relative;
+  background-color: var(--aged-paper);
+  border-radius: 2px 8px 8px 2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(75, 54, 33, 0.15),
+    2px 2px 4px rgba(75, 54, 33, 0.2),
+    4px 4px 8px rgba(75, 54, 33, 0.1);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+.font-typewriter {
+  font-family: var(--font-typewriter);
+}

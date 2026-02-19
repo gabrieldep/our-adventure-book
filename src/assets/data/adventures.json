@@ -1,0 +1,76 @@
+{
+  "adventures": [
+    {
+      "id": "1",
+      "title": "Paradise Falls",
+      "date": "2024-06-15",
+      "description": "Our first glimpse of the falls. Worth every balloon.",
+      "type": "photo",
+      "contentUrl": "https://picsum.photos/400/300",
+      "coordinates": null
+    },
+    {
+      "id": "2",
+      "title": "The House Landing",
+      "date": "2024-06-16",
+      "description": "We made it! The house finally touched down.",
+      "type": "photo",
+      "contentUrl": "https://picsum.photos/400/300",
+      "coordinates": null
+    },
+    {
+      "id": "3",
+      "title": "South America",
+      "date": "2024-06-14",
+      "description": "Somewhere over the jungle.",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -5.1785, "lng": -78.9902 }
+    },
+    {
+      "id": "4",
+      "title": "Kevin spotted",
+      "date": "2024-06-17",
+      "description": "Russell's best friend. Don't feed it chocolate!",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "elements": [
+        {
+          "adventureId": "1",
+          "top": 10,
+          "left": 8,
+          "rotation": -2
+        },
+        {
+          "adventureId": "4",
+          "top": 55,
+          "left": 52,
+          "rotation": 1
+        }
+      ]
+    },
+    {
+      "pageNumber": 2,
+      "elements": [
+        {
+          "adventureId": "2",
+          "top": 15,
+          "left": 45,
+          "rotation": 2
+        },
+        {
+          "adventureId": "3",
+          "top": 12,
+          "left": 5,
+          "rotation": -1
+        }
+      ]
+    }
+  ]
+}
