@@ -6,7 +6,7 @@
       "date": "2025-02-23",
       "description": "Nossa primeira foto :)",
       "type": "photo",
-      "contentUrl": "/assets/data/images/2025-02-23.1.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/2025-02-23.1.jpeg",
       "coordinates": null
     },
     {
@@ -24,7 +24,7 @@
       "date": "2025-02-23",
       "description": "Foto número zero",
       "type": "photo",
-      "contentUrl": "/assets/data/images/2025-02-23.2.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/2025-02-23.2.jpeg",
       "coordinates": null
     },
     {
@@ -60,7 +60,7 @@
       "date": "2025-02-28",
       "description": "Beijinho",
       "type": "photo",
-      "contentUrl": "/assets/data/images/2025-02-28.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/2025-02-28.jpeg",
       "coordinates": null
     },
     {
