@@ -61,7 +61,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     const id = this.mapContainerId();
     if (!id || !coords) return;
 
-    const L = await import('leaflet');
+    const leafletModule = await import('leaflet');
+    const L = (leafletModule as { default?: typeof import('leaflet') }).default ?? leafletModule;
     const map = L.map(id, {
       center: [coords.lat, coords.lng],
       zoom: 10,
