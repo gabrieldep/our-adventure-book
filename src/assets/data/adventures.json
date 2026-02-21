@@ -98,6 +98,15 @@
       "type": "photo",
       "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/princesa-no-mercado-novo.jpeg",
       "coordinates": null
+    },
+    {
+      "id": "12",
+      "title": "",
+      "date": "2025-03-14",
+      "description": "Rua Sapucai com Vini e Miranda",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/friends.jpeg",
+      "coordinates": null
     }
   ],
   "pages": [
