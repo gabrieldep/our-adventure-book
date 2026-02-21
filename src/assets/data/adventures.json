@@ -71,6 +71,33 @@
       "type": "map",
       "contentUrl": null,
       "coordinates": { "lat": -19.923659, "lng": -43.941722 }
+    },
+    {
+      "id": "9",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Barquinho :)",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/barquinho.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "10",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Primeiro presente",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "11",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Bar Del Ruim",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/barquinho.jpeg",
+      "coordinates": null
     }
   ],
   "pages": [
@@ -113,8 +140,7 @@
           "rotation": 15
         }
       ]
-    }
-    ,
+    },
     {
       "pageNumber": 3,
       "elements": [
@@ -136,6 +162,40 @@
           "left": 50,
           "rotation": 0
         }
+      ]
+    },
+    {
+      "pageNumber": 4,
+      "elements": [
+        {
+          "adventureId": "9",
+          "top": 20,
+          "left": 15,
+          "rotation": -4
+        },
+        {
+          "adventureId": "10",
+          "top": 15,
+          "left": 65,
+          "rotation": 10
+        }        
+      ]
+    },
+    {
+      "pageNumber": 5,
+      "elements": [
+        {
+          "adventureId": "11",
+          "top": 20,
+          "left": 8,
+          "rotation": -4
+        },
+        {
+          "adventureId": "12",
+          "top": 65,
+          "left": 0,
+          "rotation": 10
+        }        
       ]
     }
   ]
