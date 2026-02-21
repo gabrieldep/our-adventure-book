@@ -139,7 +139,7 @@
       "id": "16",
       "title": "",
       "date": "2025-05-14",
-      "description": "Comando Rasta",
+      "description": "Pré-jogo open comida árabe",
       "type": "photo",
       "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/comando-rasta.jpeg",
       "coordinates": null
@@ -168,7 +168,7 @@
       "date": "2025-02-28",
       "description": "Brahminha",
       "type": "photo",
-      "contentUrl": "/assets/data/images/brahma.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/brahma.jpeg",
       "coordinates": null
     },
     {
@@ -177,12 +177,12 @@
       "date": "2025-06-08",
       "description": "Inhotim",
       "type": "photo",
-      "contentUrl": "/assets/data/images/inhotim.1.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/inhotim.1.jpeg",
       "coordinates": null
     },
     {
       "id": "21",
-      "title": "Inhotim",
+      "title": "",
       "date": "2025-06-08",
       "description": "Inhotim :)",
       "type": "map",
@@ -193,7 +193,7 @@
       "id": "22",
       "title": "Inhotim",
       "date": "2025-06-08",
-      "description": "Primeira vez do Gabriel em Inhotim :-)",
+      "description": "Primeira vez do Gabriel em Inhotim :)",
       "type": "note",
       "contentUrl": null,
       "coordinates": null
@@ -204,7 +204,79 @@
       "date": "2025-07-27",
       "description": "Festa de formatura do Luiz",
       "type": "photo",
-      "contentUrl": "/assets/data/images/ana-e-amigos.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/ana-e-amigos.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "24",
+      "title": "",
+      "date": "2025-07-27",
+      "description": "Niágara Eventos",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -20.058923, "lng": -43.978106 }
+    },
+    {
+      "id": "25",
+      "title": "Formatura do Luiz",
+      "date": "2025-07-27",
+      "description": "Primeira festa de formatura de faculdade da Ana no Brasil",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "26",
+      "title": "Volta de Uber",
+      "date": "2025-07-27",
+      "description": "Acho que a primeira vez que a Ana fez 200km/h em um carro :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "27",
+      "title": "Jogo do Cruzeiro",
+      "date": "2025-05-14",
+      "description": "Primeiro jogo do cruzeiro que fomos juntos teve open comida árabe na sede do Comando Rasta",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "28",
+      "title": "",
+      "date": "2025-07-27",
+      "description": "A Roda Bloco",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.920901, "lng": -43.952635 }
+    },
+    {
+      "id": "29",
+      "title": "A Roda Bloco",
+      "date": "2025-05-14",
+      "description": "Bloquinho com todos os amigos da Ana que vieram para o Brasil. Conhecemos o Diego esse dia :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "30",
+      "title": "",
+      "date": "2025-03-14",
+      "description": "Dorsé, Rua Sapucai",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.916065, "lng": -43.932255 }
+    },
+    {
+      "id": "31",
+      "title": "Encontrinho pós carnaval",
+      "date": "2025-05-14",
+      "description": "Encontro com Miranda, Tales, Vini, Thainara, Bruno e Helena",
+      "type": "note",
+      "contentUrl": null,
       "coordinates": null
     }
   ],
@@ -333,10 +405,16 @@
       "pageNumber": 7,
       "elements": [
         {
-          "adventureId": "15",
-          "top": 35,
-          "left": 15,
+          "adventureId": "16",
+          "top": 5,
+          "left": 10,
           "rotation": 0
+        },
+        {
+          "adventureId": "27",
+          "top": 100,
+          "left": 70,
+          "rotation": 10
         }
       ]
     },
@@ -345,25 +423,49 @@
       "elements": [
         {
           "adventureId": "19",
-          "top": 10,
-          "left": 20,
+          "top": 0,
+          "left": 30,
           "rotation": -4
-        }     
-      ]
-    },
-    {
-      "pageNumber": 8,
-      "elements": [
+        },  
         {
-          "adventureId": "16",
-          "top": 10,
-          "left": 20,
-          "rotation": -4
-        }     
+          "adventureId": "28",
+          "top": 80,
+          "left": 0,
+          "rotation": 0
+        },
+        {
+          "adventureId": "29",
+          "top": 20,
+          "left": 0,
+          "rotation": 0
+        }
       ]
     },
     {
       "pageNumber": 9,
+      "elements": [
+        {
+          "adventureId": "15",
+          "top": 0,
+          "left": 20,
+          "rotation": -4
+        },
+        {
+          "adventureId": "30",
+          "top": 70,
+          "left": 50,
+          "rotation": 20
+        },
+        {
+          "adventureId": "31",
+          "top": 90,
+          "left": 10,
+          "rotation": 0
+        } 
+      ]
+    },
+    {
+      "pageNumber": 10,
       "elements": [
         {
           "adventureId": "20",
@@ -380,6 +482,35 @@
         {
           "adventureId": "22",
           "top": 80,
+          "left": 60,
+          "rotation": 10
+        }
+      ]
+    },
+    {
+      "pageNumber": 11,
+      "elements": [
+        {
+          "adventureId": "23",
+          "top": 0,
+          "left": 46,
+          "rotation": 6
+        },
+        {
+          "adventureId": "24",
+          "top": 75,
+          "left": 5,
+          "rotation": -10
+        },
+        {
+          "adventureId": "25",
+          "top": 20,
+          "left": 0,
+          "rotation": -10
+        },
+        {
+          "adventureId": "26",
+          "top": 100,
           "left": 60,
           "rotation": 10
         }
