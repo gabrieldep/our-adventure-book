@@ -78,7 +78,7 @@
       "date": "2025-02-28",
       "description": "Barquinho :)",
       "type": "photo",
-      "contentUrl": "/assets/data/images/barquinho.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/barquinho.jpeg",
       "coordinates": null
     },
     {
@@ -94,9 +94,9 @@
       "id": "11",
       "title": "",
       "date": "2025-02-28",
-      "description": "Bar Del Ruim",
+      "description": "New Market with Darby and Clara",
       "type": "photo",
-      "contentUrl": "/assets/data/images/barquinho.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/princesa-no-mercado-novo.jpeg",
       "coordinates": null
     }
   ],
