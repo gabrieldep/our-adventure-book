@@ -7,6 +7,10 @@
     0 8px 16px rgba(75, 54, 33, 0.06);
 }
 
+.polaroid-caption {
+  font-size: 1.5rem;
+}
+
 :host-context(.font-handwriting) {
   font-family: 'Indie Flower', cursive;
 }
@@ -14,5 +18,9 @@
 @media (max-width: 767px) {
   .polaroid {
     max-width: 300px;
+  }
+
+  .polaroid-caption {
+    font-size: 1rem;
   }
 }

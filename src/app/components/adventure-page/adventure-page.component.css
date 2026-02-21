@@ -24,6 +24,8 @@
 :host-context(.kraft-inner) .adventure-page .font-handwriting,
 :host-context(.kraft-inner) .note {
   color: var(--kraft-text);
+  font-size: 1.1rem;
+
 }
 
 :host-context(.kraft-inner) .note {
