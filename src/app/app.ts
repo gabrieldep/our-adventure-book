@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SpotifyEmbedComponent } from './components/spotify-embed/spotify-embed.component';
 
-const SPOTIFY_PLAYLIST_URI = 'spotify:playlist:1wCSpznfoAJC4OLsPevQ7C';
+const SPOTIFY_PLAYLIST_URI = 'spotify:playlist:6jy7BmAXi0dugxG6a8DwXg';
 const MOBILE_BREAKPOINT = 768;
 
 @Component({
