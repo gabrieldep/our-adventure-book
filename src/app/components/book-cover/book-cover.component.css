@@ -155,7 +155,7 @@
 
 .cover-title {
   font-family: 'Indie Flower', cursive;
-  font-size: clamp(1.25rem, 2.5vw, 2.75rem);
+  font-size: clamp(4.25rem, 2.5vw, 2.75rem);
   font-weight: 700;
   text-align: center;
   line-height: 1.35;
@@ -181,6 +181,14 @@
 .title-book {
   display: block;
   color: #4a6b5c;
+  transform: rotate(0.8deg);
+}
+
+.authors {
+  font-family: 'Indie Flower', cursive;
+  font-size: clamp(1.25rem, 2.5vw, 2.75rem);
+  display: block;
+  color: #c3c2c2;
   transform: rotate(0.8deg);
 }
 
