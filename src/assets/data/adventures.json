@@ -105,7 +105,25 @@
       "date": "2025-03-14",
       "description": "Rua Sapucai com Vini e Miranda",
       "type": "photo",
-      "contentUrl": "/assets/data/images/friends.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/friends.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "13",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Mercado Novo",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.920450, "lng": -43.945921 }
+    },
+    {
+      "id": "14",
+      "title": "",
+      "date": "2025-02-28",
+      "description": "Mercado Novo :)",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/casal-mercado-novo.jpeg",
       "coordinates": null
     }
   ],
@@ -195,16 +213,27 @@
       "elements": [
         {
           "adventureId": "11",
-          "top": 20,
-          "left": 8,
+          "top": 0,
+          "left": 0,
           "rotation": -4
         },
         {
-          "adventureId": "12",
-          "top": 65,
-          "left": 0,
+          "adventureId": "13",
+          "top": 75,
+          "left": 40,
           "rotation": 10
-        }        
+        }      
+      ]
+    },
+    {
+      "pageNumber": 6,
+      "elements": [
+        {
+          "adventureId": "14",
+          "top": 0,
+          "left": 20,
+          "rotation": -4
+        }     
       ]
     }
   ]
