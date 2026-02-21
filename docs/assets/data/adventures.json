@@ -303,10 +303,9 @@
       "date": "2025-06-07",
       "description": "Primos do Vini e nós",
       "type": "photo",
-      "contentUrl": "/assets/data/images/aniversario-luana.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/aniversario-luana.jpeg",
       "coordinates": null
-    }
-    ,
+    },
     {
       "id": "35",
       "title": "Feira Hippie",
@@ -331,7 +330,115 @@
       "date": "2025-06-29",
       "description": "Eu, você e sanny tomando umas :)",
       "type": "photo",
-      "contentUrl": "/assets/data/images/feira-hippie-sanny.jpeg",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/feira-hippie-sanny.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "38",
+      "title": "",
+      "date": "2025-07-09",
+      "description": "Dia de artistas na casa da Ana",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/pintando-snoopy.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "39",
+      "title": "Painting day!!!",
+      "date": "2025-07-09",
+      "description": "Desafio para ver quem fazia o melhor snoopy andando de fusca (Gabriel ganhou)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "40",
+      "title": "Guarapari",
+      "date": "2025-08-07",
+      "description": "Trilha com mirantes para ir para a Praia da Cerca",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "41",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Praia da Cerca- Guarapari",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -20.657128, "lng": -40.474430 }
+    },
+    {
+      "id": "42",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Selfie :)",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/guarapari.1.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "43",
+      "title": "Praia de Setiba",
+      "date": "2025-08-08",
+      "description": "Cavando um buraco na areia :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "44",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Praia de Setiba- Guarapari",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -20.634852, "lng": -40.435675 }
+    },
+    {
+      "id": "45",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Ana brincando",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/buraco-areia.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "46",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Ana posando",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/guarapari.2.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "47",
+      "title": "Chegamos no Rio de Janeiro!!!",
+      "date": "2025-08-13",
+      "description": "Tomando uma cervejinha ate o airbnb abrir",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "48",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Fornolleto- RJ",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -22.963293, "lng": -43.174971 }
+    },
+    {
+      "id": "49",
+      "title": "",
+      "date": "2025-08-07",
+      "description": "Mais uma brahminha",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/rj.1.jpeg",
       "coordinates": null
     }
   ],
@@ -614,6 +721,98 @@
           "top": 80,
           "left": 20,
           "rotation": -5
+        }
+      ]
+    },
+    {
+      "pageNumber": 14,
+      "elements": [
+        {
+          "adventureId": "38",
+          "top": 20,
+          "left": 15,
+          "rotation": 0
+        },
+        {
+          "adventureId": "39",
+          "top": 5,
+          "left": 70,
+          "rotation": 20
+        }
+      ]
+    },
+    {
+      "pageNumber": 15,
+      "elements": [
+        {
+          "adventureId": "40",
+          "top": 40,
+          "left": 70,
+          "rotation": 0
+        },
+        {
+          "adventureId": "41",
+          "top": 80,
+          "left": 57,
+          "rotation": 0
+        },
+        {
+          "adventureId": "42",
+          "top": 0,
+          "left": 0,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "pageNumber": 16,
+      "elements": [
+        {
+          "adventureId": "43",
+          "top": 30,
+          "left": 15,
+          "rotation": 5
+        },
+        {
+          "adventureId": "44",
+          "top": 70,
+          "left": 10,
+          "rotation": -10
+        },
+        {
+          "adventureId": "45",
+          "top": 0,
+          "left": 60,
+          "rotation": -5
+        },
+        {
+          "adventureId": "46",
+          "top": 80,
+          "left": 70,
+          "rotation": 5
+        }
+      ]
+    },
+    {
+      "pageNumber": 17,
+      "elements": [
+        {
+          "adventureId": "47",
+          "top": 20,
+          "left": 5,
+          "rotation": -5
+        },
+        {
+          "adventureId": "48",
+          "top": 70,
+          "left": 0,
+          "rotation": 0
+        },
+        {
+          "adventureId": "49",
+          "top": 0,
+          "left": 50,
+          "rotation": 0
         }
       ]
     }
