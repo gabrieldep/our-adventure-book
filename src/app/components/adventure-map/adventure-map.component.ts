@@ -58,18 +58,12 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   private async initMap(): Promise<void> {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    const L = (window as unknown as { L?: any }).L;
+    if (!L) return;
+
     const coords = this.coordinates();
     const id = this.mapContainerId();
     if (!id || !coords) return;
-
-    // High-compatibility dynamic import: handles Dev vs Production bundle (ESM interop)
-    const Leaflet = await import('leaflet');
-    const L = (Leaflet as { default?: typeof import('leaflet') }).default || Leaflet;
-
-    if (!L.map) {
-      console.error('Leaflet map function not found. Module structure:', Leaflet);
-      return;
-    }
 
     const map = L.map(id, {
       center: [coords.lat, coords.lng],
