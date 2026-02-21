@@ -125,6 +125,87 @@
       "type": "photo",
       "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/casal-mercado-novo.jpeg",
       "coordinates": null
+    },
+    {
+      "id": "15",
+      "title": "",
+      "date": "2025-03-14",
+      "description": "Cigarrinho :)",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/cigarro.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "16",
+      "title": "",
+      "date": "2025-05-14",
+      "description": "Comando Rasta",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/comando-rasta.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "17",
+      "title": "Aniversário",
+      "date": "2025-02-28",
+      "description": "Comemorando o aniversário da Ana com os amigos dos Estados Unidos :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "18",
+      "title": "Copão",
+      "date": "2025-02-28",
+      "description": "Tomando um copão suspeito",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "19",
+      "title": "Brahma no carnaval",
+      "date": "2025-02-28",
+      "description": "Brahminha",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/brahma.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "20",
+      "title": "Inhotim",
+      "date": "2025-06-08",
+      "description": "Inhotim",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/inhotim.1.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "21",
+      "title": "Inhotim",
+      "date": "2025-06-08",
+      "description": "Inhotim :)",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -20.124155, "lng": -44.219567 }
+    },
+    {
+      "id": "22",
+      "title": "Inhotim",
+      "date": "2025-06-08",
+      "description": "Primeira vez do Gabriel em Inhotim :-)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "23",
+      "title": "Ana, Felipe e Luiz",
+      "date": "2025-07-27",
+      "description": "Festa de formatura do Luiz",
+      "type": "photo",
+      "contentUrl": "/assets/data/images/ana-e-amigos.jpeg",
+      "coordinates": null
     }
   ],
   "pages": [
@@ -220,9 +301,15 @@
         {
           "adventureId": "13",
           "top": 75,
-          "left": 40,
+          "left": 50,
           "rotation": 10
-        }      
+        },
+        {
+          "adventureId": "17",
+          "top": 100,
+          "left": 5,
+          "rotation": -10
+        }     
       ]
     },
     {
@@ -230,10 +317,72 @@
       "elements": [
         {
           "adventureId": "14",
-          "top": 0,
+          "top": 10,
+          "left": 20,
+          "rotation": -4
+        },
+        {
+          "adventureId": "18",
+          "top": 10,
+          "left": 10,
+          "rotation": -19
+        }    
+      ]
+    },
+    {
+      "pageNumber": 7,
+      "elements": [
+        {
+          "adventureId": "15",
+          "top": 35,
+          "left": 15,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "pageNumber": 8,
+      "elements": [
+        {
+          "adventureId": "19",
+          "top": 10,
           "left": 20,
           "rotation": -4
         }     
+      ]
+    },
+    {
+      "pageNumber": 8,
+      "elements": [
+        {
+          "adventureId": "16",
+          "top": 10,
+          "left": 20,
+          "rotation": -4
+        }     
+      ]
+    },
+    {
+      "pageNumber": 9,
+      "elements": [
+        {
+          "adventureId": "20",
+          "top": 10,
+          "left": 40,
+          "rotation": 6
+        },
+        {
+          "adventureId": "21",
+          "top": 70,
+          "left": 5,
+          "rotation": -10
+        },
+        {
+          "adventureId": "22",
+          "top": 80,
+          "left": 60,
+          "rotation": 10
+        }
       ]
     }
   ]
