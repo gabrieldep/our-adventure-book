@@ -512,6 +512,33 @@
       "type": "photo",
       "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/praia-flamengo.jpeg",
       "coordinates": null
+    },
+    {
+      "id": "58",
+      "title": "Outro domingo no Parque Municipal",
+      "date": "2025-09-14",
+      "description": "Como sempre combinando de ir na feira e ficando mais tempo no parque",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "59",
+      "title": "",
+      "date": "2025-09-14",
+      "description": "Parque Municipal de Belo Horizonte",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -19.924359151495025, "lng": -43.93372280329742 }
+    },
+    {
+      "id": "60",
+      "title": "",
+      "date": "2025-09-14",
+      "description": ":)",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/parque-municipal.jpeg",
+      "coordinates": null
     }
   ],
   "pages": [
@@ -947,6 +974,29 @@
           "adventureId": "56",
           "top": 0,
           "left": 60,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "pageNumber": 20,
+      "elements": [
+        {
+          "adventureId": "58",
+          "top": 90,
+          "left": 60,
+          "rotation": 10
+        },
+        {
+          "adventureId": "59",
+          "top": 75,
+          "left": 0,
+          "rotation": 0
+        },
+        {
+          "adventureId": "60",
+          "top": 0,
+          "left": 15,
           "rotation": 0
         }
       ]
