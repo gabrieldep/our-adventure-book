@@ -2,21 +2,26 @@ import { Component, signal, computed, PLATFORM_ID, inject, DestroyRef, afterNext
 import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SpotifyEmbedComponent } from './components/spotify-embed/spotify-embed.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { AdminStateService } from './services/admin-state.service';
 
 const SPOTIFY_PLAYLIST_URI = 'spotify:playlist:6jy7BmAXi0dugxG6a8DwXg';
 const MOBILE_BREAKPOINT = 768;
+const BOOK_HEIGHT = 900;
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SpotifyEmbedComponent],
+  imports: [RouterOutlet, SpotifyEmbedComponent, TimelineComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
+  readonly adminState = inject(AdminStateService);
 
   readonly spotifyPlaylistUri = SPOTIFY_PLAYLIST_URI;
+  readonly bookHeight = BOOK_HEIGHT;
   private readonly viewportWidth = signal(1024);
   readonly isMobile = computed(() => this.viewportWidth() < MOBILE_BREAKPOINT);
 

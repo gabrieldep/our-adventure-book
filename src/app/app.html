@@ -1,8 +1,27 @@
 <div class="paper-texture min-h-screen">
-  <router-outlet />
+  <button
+    type="button"
+    class="app-todo-btn font-typewriter"
+    (click)="adminState.toggle()"
+  >
+    {{ adminState.showAdmin() ? 'Hide To-do' : 'To-do' }}
+  </button>
   @if (!isMobile()) {
-    <div class="spotify-root">
-      <app-spotify-embed [uri]="spotifyPlaylistUri" [compact]="true" />
-    </div>
+    <aside class="app-timeline-bookmark" aria-label="Book pages">
+      <app-timeline [bookHeight]="bookHeight" />
+    </aside>
   }
+  <div class="app-content" [class.app-content--with-timeline]="!isMobile()">
+    <router-outlet />
+    @if (!isMobile()) {
+      <div class="spotify-root">
+        <app-spotify-embed [uri]="spotifyPlaylistUri" [compact]="true" />
+      </div>
+    }
+    @if (isMobile()) {
+      <nav class="mobile-timeline-bar">
+        <app-timeline [horizontal]="true" />
+      </nav>
+    }
+  </div>
 </div>

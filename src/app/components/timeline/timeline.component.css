@@ -1,14 +1,302 @@
+/* ==========================================================================
+   Timeline – Vertical bookmark (contained rope) + horizontal mobile bar
+   ========================================================================== */
+
+:host {
+  border: none;
+  outline: none;
+}
+
 .timeline {
   display: flex;
   align-items: center;
   gap: 0;
 }
 
-.timeline--vertical {
+/* --------------------------------------------------------------------------
+   Vertical bookmark: fixed height, contained scroll, rope aesthetic
+   -------------------------------------------------------------------------- */
+.timeline--bookmark {
   flex-direction: column;
-  min-height: 2rem;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: none;
+  outline: none;
 }
 
+.timeline-scroll {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  position: relative;
+  /* Hide scrollbar completely (no black track line) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Content wrapper so rope stretches full content height */
+.timeline-content {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Rope line: full height of content; default centered; --right pins to left edge */
+.timeline-rope {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(75, 54, 33, 0.4) 5%,
+    rgba(75, 54, 33, 0.7) 15%,
+    rgba(75, 54, 33, 0.85) 50%,
+    rgba(75, 54, 33, 0.7) 85%,
+    rgba(75, 54, 33, 0.4) 95%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 4px rgba(0, 0, 0, 0.2),
+    0 0 1px rgba(75, 54, 33, 0.5);
+}
+
+.timeline-nodes {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0;
+  min-height: min-content;
+}
+
+/* Right-side bookmark: rope on left (toward book), nodes/badges on right */
+.timeline-rope--right {
+  left: 0;
+  right: auto;
+  width: 3px;
+  transform: none;
+}
+
+.timeline-nodes--right {
+  align-items: center;
+}
+
+.timeline-badge--right {
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 64px;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.timeline-label--right {
+  text-align: right;
+  max-width: 4.5rem;
+  min-width: 0;
+}
+
+/* Connector segments on right layout: left side of strip (toward book) */
+.timeline-string--right {
+  align-self: flex-start;
+}
+
+/* String segment between badges (vertical) */
+.timeline-string--vertical {
+  width: 2px;
+  min-height: 12px;
+  height: 16px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(75, 54, 33, 0.5),
+    rgba(75, 54, 33, 0.35)
+  );
+  border-radius: 1px;
+}
+
+/* Color tabs: two-color alternating (Vintage Brown #4B3621 / Muted Gold #D2B48C), small bookmarks */
+.timeline-tab {
+  width: 40px;
+  height: 20px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 4px rgba(45, 27, 13, 0.2);
+}
+
+.timeline-tab:hover {
+  transform: scale(1.05);
+}
+
+.timeline-tab:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--vintage-red),
+    0 0 0 4px rgba(139, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 4px rgba(45, 27, 13, 0.2);
+}
+
+/* Tooltip on hover: adventure title/date, Indie Flower */
+.timeline-tooltip {
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.25rem 0.5rem;
+  font-family: 'Indie Flower', cursive;
+  font-size: 0.7rem;
+  color: var(--kraft-text, #2d1b0d);
+  background: rgba(245, 245, 220, 0.98);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(45, 27, 13, 0.2);
+  white-space: nowrap;
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.15s, opacity 0.15s;
+  z-index: 10;
+}
+
+.timeline-tab:hover .timeline-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Active tab: Adventure Red, overrides brown/gold; glow + slightly larger */
+.timeline-tab--active {
+  background-color: #8b0000;
+  transform: scale(1.12);
+  filter: brightness(1.2);
+  box-shadow:
+    0 0 10px rgba(139, 0, 0, 0.5),
+    0 0 18px rgba(139, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 6px rgba(45, 27, 13, 0.3);
+}
+
+.timeline-tab--active:hover {
+  transform: scale(1.15);
+}
+
+/* Hover tooltip works on active tab too (same .timeline-tab:hover .timeline-tooltip) */
+
+/* Left-side bookmark: tabs centered in column */
+.timeline--bookmark .timeline-tab {
+  box-sizing: border-box;
+}
+
+/* Legacy badge styles (mobile horizontal may still use timeline-knot; keep for --right if reintroduced) */
+.timeline-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem 0.35rem 0.35rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(
+    145deg,
+    #c4a484 0%,
+    #b8956a 25%,
+    #a67c52 50%,
+    #9a6b42 75%,
+    #8b5a2b 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(45, 27, 13, 0.25);
+  position: relative;
+}
+
+.timeline-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 1px,
+    rgba(0, 0, 0, 0.04) 1px,
+    rgba(0, 0, 0, 0.04) 2px
+  );
+  pointer-events: none;
+}
+
+.timeline-badge:hover {
+  transform: scale(1.05);
+}
+
+.timeline-badge:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--vintage-red),
+    0 0 0 4px rgba(139, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 4px rgba(45, 27, 13, 0.25);
+}
+
+.timeline-badge-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #8b0000 0%, #6b0000 100%);
+  border: 1.5px solid var(--leather-brown);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.timeline-badge--active {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 12px rgba(218, 165, 32, 0.4),
+    0 0 24px rgba(218, 165, 32, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 6px rgba(45, 27, 13, 0.3);
+}
+
+.timeline-label {
+  font-family: var(--font-typewriter);
+  font-size: 0.7rem;
+  color: var(--kraft-text, #2d1b0d);
+  max-width: 5rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   Horizontal (mobile) bar – keep existing knot style
+   -------------------------------------------------------------------------- */
 .timeline--horizontal {
   flex-direction: row;
   justify-content: center;
@@ -47,19 +335,25 @@
   border-color: var(--vintage-red);
 }
 
-.timeline-string {
+.timeline-string:not(.timeline-string--vertical) {
   background: rgba(75, 54, 33, 0.6);
   flex-shrink: 0;
-}
-
-.timeline--vertical .timeline-string {
-  width: 2px;
-  min-height: 24px;
-  max-height: 2rem;
 }
 
 .timeline--horizontal .timeline-string {
   height: 2px;
   min-width: 12px;
   max-width: 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

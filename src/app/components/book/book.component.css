@@ -491,15 +491,3 @@
   }
 }
 
-/* Mobile timeline bottom bar */
-.mobile-timeline-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  background: rgba(196, 164, 132, 0.97);
-  border-top: 1px solid rgba(45, 27, 13, 0.2);
-  padding: 0.5rem 1rem;
-  backdrop-filter: blur(4px);
-}

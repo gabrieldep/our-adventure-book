@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AdventureService } from '../../services/adventure.service';
+import { AdminStateService } from '../../services/admin-state.service';
 import { AdventurePageComponent } from '../adventure-page/adventure-page.component';
 import { BookCoverComponent } from '../book-cover/book-cover.component';
-import { TimelineComponent } from '../timeline/timeline.component';
 import { AdminComponent } from '../admin/admin.component';
 
 const BOOK_PAGE_WIDTH = 700;
@@ -26,7 +26,6 @@ const SWIPE_RATIO = 1.5;
   imports: [
     AdventurePageComponent,
     BookCoverComponent,
-    TimelineComponent,
     AdminComponent,
   ],
   templateUrl: './book.component.html',
@@ -34,10 +33,10 @@ const SWIPE_RATIO = 1.5;
 })
 export class BookComponent {
   readonly adventureService = inject(AdventureService);
+  readonly adminState = inject(AdminStateService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly showAdmin = signal(false);
   readonly bookHeight = BOOK_HEIGHT;
   /** When true, the 'turning' page shows lift shadow (briefly on prev/next). */
   readonly pageLifting = signal<'left' | 'right' | null>(null);

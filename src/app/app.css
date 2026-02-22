@@ -1,3 +1,69 @@
+/* To-do button: top-right, Papel Kraft style, matches book 3D aesthetic */
+.app-todo-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  background-color: #4b3621;
+  color: #f5f5dc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.12);
+}
+.app-todo-btn:hover {
+  background-color: #6b5344;
+}
+
+/* Timeline: desktop bookmark pinned to left edge */
+.app-timeline-bookmark {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 72px;
+  height: 900px;
+  max-height: calc(100dvh - 2rem);
+  margin-right: 0.5rem; /* gap between timeline and book spine */
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  outline: none;
+  /* Tucked behind left leather: depth shadow to the right toward book */
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15), 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-timeline-bookmark app-timeline {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Reserve space for left timeline so book doesn't overlap */
+.app-content--with-timeline {
+  padding-left: calc(72px + 0.5rem);
+}
+
+/* Mobile/portrait: desktop timeline hidden; horizontal bar at bottom so single-page view isn't crowded */
+.mobile-timeline-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: rgba(196, 164, 132, 0.97);
+  border-top: 1px solid rgba(45, 27, 13, 0.2);
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(4px);
+}
+
 .spotify-root {
   position: fixed;
   right: 1rem;
@@ -16,5 +82,6 @@
     width: 260px;
     right: 0.5rem;
     bottom: 3.5rem;
+    transform: none;
   }
 }

@@ -1,21 +1,60 @@
-<nav
-  class="timeline"
-  [class.timeline--horizontal]="horizontal()"
-  [class.timeline--vertical]="!horizontal()"
-  aria-label="Book pages"
->
-  @for (pageNum of pageNumbers(); track pageNum; let i = $index) {
-    <button
-      type="button"
-      class="timeline-knot"
-      [class.timeline-knot--active]="currentPageNumber() === pageNum"
-      [attr.aria-current]="currentPageNumber() === pageNum ? 'page' : null"
-      (click)="goToPage(pageNum)"
-    >
-      <span class="sr-only">Page {{ pageNum }}</span>
-    </button>
-    @if (i < pageNumbers().length - 1) {
-      <div class="timeline-string" aria-hidden="true"></div>
+@if (horizontal()) {
+  <!-- Mobile: horizontal bar (unchanged layout) -->
+  <nav
+    class="timeline timeline--horizontal"
+    aria-label="Book pages"
+  >
+    @for (pageNum of pageNumbers(); track pageNum; let i = $index) {
+      <button
+        type="button"
+        class="timeline-knot timeline-knot--mobile"
+        [class.timeline-knot--active]="currentPageNumber() === pageNum"
+        [attr.aria-current]="currentPageNumber() === pageNum ? 'page' : null"
+        (click)="goToPage(pageNum)"
+      >
+        <span class="sr-only">Page {{ pageNum }}</span>
+      </button>
+      @if (i < pageNumbers().length - 1) {
+        <div class="timeline-string" aria-hidden="true"></div>
+      }
     }
-  }
-</nav>
+  </nav>
+} @else {
+  <!-- Desktop: vertical bookmark – two-color alternating tabs, no text; tooltip on hover -->
+  <nav
+    class="timeline timeline--vertical timeline--bookmark"
+    [style.height.px]="bookHeight() ?? 900"
+    aria-label="Book pages"
+  >
+    <div
+      #scrollContainer
+      class="timeline-scroll"
+      (scroll)="onScroll($event)"
+    >
+      <div class="timeline-content">
+        <div class="timeline-rope" aria-hidden="true"></div>
+        <div class="timeline-nodes">
+        @for (pageNum of pageNumbers(); track pageNum; let i = $index) {
+          @if (i > 0) {
+            <div class="timeline-string timeline-string--vertical" aria-hidden="true"></div>
+          }
+          <button
+            type="button"
+            class="timeline-tab"
+            [class.timeline-tab--active]="currentPageNumber() === pageNum"
+            [style.background-color]="currentPageNumber() === pageNum ? null : (i % 2 === 0 ? '#4B3621' : '#D2B48C')"
+            [attr.aria-current]="currentPageNumber() === pageNum ? 'page' : null"
+            [attr.data-page]="pageNum"
+            [attr.title]="getPageLabel(pageNum)"
+            #badge
+            (click)="goToPage(pageNum)"
+          >
+            <span class="timeline-tooltip font-handwriting">{{ getPageLabel(pageNum) }}</span>
+            <span class="sr-only">{{ getPageLabel(pageNum) }}</span>
+          </button>
+        }
+        </div>
+      </div>
+    </div>
+  </nav>
+}
