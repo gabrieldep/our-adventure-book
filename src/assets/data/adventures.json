@@ -440,6 +440,78 @@
       "type": "photo",
       "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/rj.1.jpeg",
       "coordinates": null
+    },
+    {
+      "id": "50",
+      "title": "Museu de Arte Moderna do Rio de Janeiro",
+      "date": "2025-08-14",
+      "description": "Depois do visto ser negado fomos pro museu aliviar o stress :)",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "51",
+      "title": "",
+      "date": "2025-08-14",
+      "description": "Museu de Arte Moderna do Rio de Janeiro",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -22.913772716106227, "lng": -43.17158010301765 }
+    },
+    {
+      "id": "52",
+      "title": "",
+      "date": "2025-08-14",
+      "description": "\"selfie\"",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/museu-rj.1.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "53",
+      "title": "Parede de quadros",
+      "date": "2025-08-14",
+      "description": "Chegamos a conclusão que a gnt consegue fazer igual",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "54",
+      "title": "",
+      "date": "2025-08-14",
+      "description": "Obras de arte",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/museu-rj.2.jpeg",
+      "coordinates": null
+    },
+    {
+      "id": "55",
+      "title": "Praia do Flamengo",
+      "date": "2025-08-14",
+      "description": "Passeamos pela praia do flamengo com muitoooo vento",
+      "type": "note",
+      "contentUrl": null,
+      "coordinates": null
+    },
+    {
+      "id": "56",
+      "title": "",
+      "date": "2025-08-14",
+      "description": "Praia do Flamengo",
+      "type": "map",
+      "contentUrl": null,
+      "coordinates": { "lat": -22.925608963116648, "lng": -43.16995891514674 }
+    },
+    {
+      "id": "57",
+      "title": "",
+      "date": "2025-08-14",
+      "description": ":)",
+      "type": "photo",
+      "contentUrl": "https://gabrieldep.github.io/our-adventure-book/assets/data/images/praia-flamengo.jpeg",
+      "coordinates": null
     }
   ],
   "pages": [
@@ -751,15 +823,15 @@
           "rotation": 0
         },
         {
-          "adventureId": "41",
-          "top": 80,
-          "left": 57,
-          "rotation": 0
-        },
-        {
           "adventureId": "42",
           "top": 0,
           "left": 0,
+          "rotation": 0
+        },
+        {
+          "adventureId": "41",
+          "top": 75,
+          "left": 57,
           "rotation": 0
         }
       ]
@@ -812,6 +884,69 @@
           "adventureId": "49",
           "top": 0,
           "left": 50,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "pageNumber": 18,
+      "elements": [
+        {
+          "adventureId": "50",
+          "top": 90,
+          "left": 65,
+          "rotation": 5
+        },
+        {
+          "adventureId": "51",
+          "top": 35,
+          "left": 0,
+          "rotation": -5
+        },
+        {
+          "adventureId": "52",
+          "top": 0,
+          "left": 60,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "pageNumber": 19,
+      "elements": [
+        {
+          "adventureId": "54",
+          "top": 15,
+          "left": 20,
+          "rotation": 0
+        },
+        {
+          "adventureId": "53",
+          "top": 5,
+          "left": 5,
+          "rotation": -25
+        }
+      ]
+    },
+    {
+      "pageNumber": 19,
+      "elements": [
+        {
+          "adventureId": "55",
+          "top": 80,
+          "left": 80,
+          "rotation": 0
+        },
+        {
+          "adventureId": "57",
+          "top": 20,
+          "left": 0,
+          "rotation": 0
+        },
+        {
+          "adventureId": "56",
+          "top": 0,
+          "left": 60,
           "rotation": 0
         }
       ]
